@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phyathai Sriracha | Plastic Surgery Call Center Assistant</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230E3E2A'/%3E%3Cpath d='M32 14c7 6 14 10 14 19a14 14 0 1 1-28 0c0-9 7-13 14-19z' fill='%23C9A961'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#0E3E2A; --pine-2:#14522F; --leaf:#1E7A4F;
+  --mint:#E9F3EC; --mint-2:#F4F9F5; --cream:#FAF8F2;
+  --gold:#C9A961; --gold-soft:#F3EAD7;
+  --ink:#1C2620; --ink-2:#5A6B60; --line:#DFE8E0; --white:#FFFFFF;
+  --rose:#B4526A; --rose-bg:#F9EEF1;
+  --amber:#9A7B2D; --amber-bg:#FBF4E4;
+  --red:#A94442; --red-bg:#FBEDEC;
+  --radius:16px;
+  --shadow-sm:0 1px 3px rgba(14,62,42,.07);
+  --shadow-md:0 6px 20px rgba(14,62,42,.10);
+  --shadow-lg:0 14px 40px rgba(14,62,42,.16);
+  --font-display:"Prompt","IBM Plex Sans Thai","Noto Sans Thai",sans-serif;
+  --font-body:"IBM Plex Sans Thai","Noto Sans Thai","Sarabun",Tahoma,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);color:var(--ink);line-height:1.6;
+  background:
+    radial-gradient(1200px 500px at 85% -10%, rgba(201,169,97,.10), transparent 60%),
+    radial-gradient(900px 500px at -10% 0%, rgba(30,122,79,.08), transparent 55%),
+    var(--cream);
+  min-height:100vh;
+}
+::selection{background:var(--gold-soft)}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px}
+.brand{display:flex;align-items:center;gap:12px;flex:0 0 auto;text-decoration:none;color:inherit}
+.brand .mark-img{height:40px;width:auto;max-width:180px;flex:0 0 auto;object-fit:contain}
+.brand .mark-mol{width:44px;height:44px;flex:0 0 44px}
+.brand-name .pyt{font-family:var(--font-display);font-weight:700;font-size:1.06rem;color:#046A4E;letter-spacing:.13em;line-height:1.1}
+.brand-name .hos{font-family:var(--font-display);font-weight:600;font-size:.56rem;color:#7FCDA3;letter-spacing:.42em;margin-top:1px}
+.brand-div{width:1px;height:34px;background:var(--line);margin:0 6px;flex:0 0 1px}
+.brand-sub{font-size:.68rem;color:var(--ink-2);line-height:1.5}
+.brand-sub span{display:block;color:var(--gold);font-weight:600;font-size:.62rem;letter-spacing:.08em}
+@media(max-width:560px){.brand-div,.brand-sub{display:none}}
+.brand-name{line-height:1.15}
+.brand-name .en{font-family:var(--font-display);font-weight:700;font-size:.98rem;color:var(--pine);letter-spacing:.06em}
+.brand-name .en span{color:var(--gold)}
+.brand-name .th{font-size:.68rem;color:var(--ink-2)}
+.top-search{flex:1;max-width:520px;margin:0 auto;position:relative;display:none}
+@media(min-width:840px){.top-search{display:block}}
+.top-search input{width:100%;padding:10px 40px 10px 42px;border-radius:999px;border:1.5px solid var(--line);background:var(--mint-2);font-family:inherit;font-size:.92rem;outline:none;transition:.25s}
+.top-search input:focus{border-color:var(--leaf);background:#fff;box-shadow:0 0 0 4px rgba(30,122,79,.12)}
+.top-search .icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--ink-2)}
+.top-search .kbd{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:.68rem;color:var(--ink-2);border:1px solid var(--line);border-radius:6px;padding:1px 7px;background:#fff}
+.clock{flex:0 0 auto;text-align:right;display:none}
+@media(min-width:640px){.clock{display:block}}
+.clock .t{font-family:var(--font-display);font-weight:600;color:var(--pine);font-size:.95rem}
+.clock .d{font-size:.66rem;color:var(--ink-2)}
+
+/* ---------- layout ---------- */
+.shell{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:0;padding:0 0 90px}
+@media(min-width:840px){.shell{grid-template-columns:222px 1fr;gap:26px;padding:22px 18px 60px}}
+.side{display:none}
+@media(min-width:840px){
+  .side{display:block;position:sticky;top:76px;align-self:start}
+  .side nav{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:10px;box-shadow:var(--shadow-sm)}
+  .side button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;border:none;background:transparent;padding:11px 13px;border-radius:11px;cursor:pointer;font-family:inherit;font-size:.88rem;color:var(--ink-2);font-weight:500;transition:.18s}
+  .side button:hover{background:var(--mint-2);color:var(--pine)}
+  .side button.active{background:var(--pine);color:#fff;box-shadow:var(--shadow-sm)}
+  .side button.active svg{color:var(--gold)}
+  .side svg{width:19px;height:19px;flex:0 0 19px}
+  .side .sec{font-size:.64rem;letter-spacing:.14em;color:var(--ink-2);padding:12px 13px 6px;text-transform:uppercase;font-weight:600}
+  .side .hotline{margin-top:12px;background:linear-gradient(150deg,var(--pine),var(--pine-2));border-radius:var(--radius);color:#fff;padding:15px;box-shadow:var(--shadow-md)}
+  .side .hotline .h{font-size:.68rem;opacity:.75;letter-spacing:.08em}
+  .side .hotline .n{font-family:var(--font-display);font-weight:600;font-size:.95rem;margin-top:2px;color:var(--gold)}
+  .side .hotline p{font-size:.7rem;opacity:.8;margin-top:6px;line-height:1.5}
+  .side .er{margin-top:10px;background:var(--red-bg);border:1px solid #EFD3D2;border-radius:var(--radius);padding:13px}
+  .side .er .h{font-size:.68rem;color:var(--red);font-weight:700;letter-spacing:.05em}
+  .side .er .n{font-family:var(--font-display);font-weight:600;font-size:.9rem;color:var(--red)}
+  .side .er p{font-size:.68rem;color:#8c5a58;margin-top:4px;line-height:1.5}
+}
+.bottomnav{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:6px 2px calc(6px + env(safe-area-inset-bottom))}
+@media(min-width:840px){.bottomnav{display:none}}
+.bottomnav button{flex:1;border:none;background:transparent;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 1px;border-radius:12px;font-size:.56rem;color:var(--ink-2);font-weight:500}
+.bottomnav button svg{width:20px;height:20px}
+.bottomnav button.active{color:var(--pine);font-weight:700}
+.bottomnav button.active svg{color:var(--leaf)}
+
+main{padding:16px 14px 0;min-width:0}
+@media(min-width:840px){main{padding:0}}
+.tab{display:none}
+.tab.active{display:block;animation:fadeUp .35s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-radius:20px;color:#fff;background:linear-gradient(135deg,var(--pine) 0%,var(--pine-2) 55%,#1B6A41 100%);padding:26px 22px;box-shadow:var(--shadow-lg);margin-bottom:18px}
+.hero:before{content:"";position:absolute;right:-70px;top:-90px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,97,.35),transparent 65%)}
+.hero:after{content:"";position:absolute;left:-40px;bottom:-120px;width:260px;height:260px;border-radius:50%;border:1.5px solid rgba(255,255,255,.14)}
+.hero .kicker{font-size:.66rem;letter-spacing:.22em;color:var(--gold);font-weight:600;text-transform:uppercase}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(1.25rem,3.4vw,1.7rem);margin:6px 0 4px;line-height:1.3}
+.hero p{font-size:.84rem;opacity:.85;max-width:560px}
+.hero .stats{display:flex;gap:22px;margin-top:16px;flex-wrap:wrap}
+.hero .stat .v{font-family:var(--font-display);font-weight:700;font-size:1.35rem;color:var(--gold)}
+.hero .stat .k{font-size:.68rem;opacity:.75}
+
+.m-search{position:relative;margin-bottom:12px}
+@media(min-width:840px){.m-search{display:none}}
+.m-search input{width:100%;padding:13px 16px 13px 44px;border-radius:14px;border:1.5px solid var(--line);background:#fff;font-family:inherit;font-size:1rem;outline:none;box-shadow:var(--shadow-sm)}
+.m-search input:focus{border-color:var(--leaf);box-shadow:0 0 0 4px rgba(30,122,79,.12)}
+.m-search .icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--ink-2)}
+
+.hotkw{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+.hotkw .lbl{font-size:.72rem;color:var(--ink-2);font-weight:600}
+.hotkw button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 13px;font-size:.78rem;font-family:inherit;color:var(--pine);cursor:pointer;transition:.18s;box-shadow:var(--shadow-sm)}
+.hotkw button:hover{background:var(--gold-soft);border-color:var(--gold);transform:translateY(-1px)}
+
+.chips{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.chips button{border:1.5px solid var(--line);background:#fff;padding:7px 16px;border-radius:999px;font-size:.83rem;cursor:pointer;font-family:inherit;color:var(--ink-2);font-weight:600;transition:.2s}
+.chips button.active{background:var(--pine);border-color:var(--pine);color:#fff;box-shadow:var(--shadow-sm)}
+.chips button .cnt{opacity:.6;font-weight:400}
+
+/* product cards */
+.cards{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:1060px){.cards{grid-template-columns:1fr 1fr}}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:box-shadow .25s,transform .25s;animation:fadeUp .4s ease both}
+.card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.card.open{grid-column:1/-1;box-shadow:var(--shadow-md)}
+.card-head{padding:15px 16px;display:flex;align-items:center;gap:13px;cursor:pointer;user-select:none}
+.gdot{width:42px;height:42px;flex:0 0 42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:.8rem}
+.g-Face .gdot{background:var(--mint);color:var(--leaf)}
+.g-Breast .gdot{background:var(--rose-bg);color:var(--rose)}
+.g-Body .gdot{background:var(--amber-bg);color:var(--amber)}
+.card-title{flex:1;min-width:0}
+.card-title .th{font-family:var(--font-display);font-weight:600;font-size:.95rem;color:var(--ink)}
+.card-title .en{font-size:.72rem;color:var(--ink-2)}
+.chev{flex:0 0 auto;color:var(--ink-2);transition:transform .3s}
+.card.open .chev{transform:rotate(180deg)}
+.card-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.card.open .card-body{max-height:3200px;border-top:1px dashed var(--line)}
+.card-body-in{padding:14px 16px 18px}
+.field{margin-top:13px}
+.field>b{display:flex;align-items:center;gap:6px;color:var(--pine);font-size:.75rem;letter-spacing:.04em;margin-bottom:5px;text-transform:uppercase;font-weight:700}
+.field>b:before{content:"";width:14px;height:2px;background:var(--gold);border-radius:2px}
+.field span{font-size:.89rem}
+.kw{display:inline-block;background:var(--mint-2);border:1px solid var(--line);border-radius:999px;padding:3px 11px;margin:3px 4px 0 0;font-size:.78rem;color:var(--pine);font-weight:500}
+.answer{position:relative;background:linear-gradient(135deg,var(--mint-2),var(--mint));border:1px solid #CFE3D4;border-radius:12px;padding:12px 42px 12px 14px;font-size:.9rem;margin-top:4px}
+.copybtn{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:#fff;width:30px;height:30px;border-radius:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--pine);transition:.18s;box-shadow:var(--shadow-sm)}
+.copybtn:hover{background:var(--gold-soft);border-color:var(--gold)}
+.copybtn svg{width:15px;height:15px}
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:4px}
+.spec{background:var(--mint-2);border:1px solid var(--line);border-radius:11px;padding:9px 12px}
+.spec .k{font-size:.66rem;color:var(--ink-2);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.spec .v{font-size:.84rem;font-weight:600;color:var(--pine);margin-top:1px;font-family:var(--font-display)}
+.spec-note{font-size:.7rem;color:var(--amber);margin-top:6px}
+.faq-item{font-size:.86rem;margin-top:7px;padding:8px 12px;background:var(--mint-2);border-radius:10px}
+.faq-item b{color:var(--leaf)}
+.note{background:var(--amber-bg);border:1px solid #EBDDBB;color:var(--amber);padding:10px 13px;border-radius:12px;font-size:.84rem;margin-top:12px;display:flex;gap:8px}
+.note svg{flex:0 0 16px;width:16px;height:16px;margin-top:2px}
+.redflag{background:var(--red-bg);border:1px solid #EFD3D2;border-radius:12px;padding:11px 13px;margin-top:12px}
+.redflag b{color:var(--red);font-size:.8rem;display:flex;align-items:center;gap:7px;font-family:var(--font-display)}
+.redflag b svg{width:15px;height:15px}
+.redflag ul{margin:6px 0 0 18px}
+.redflag li{font-size:.83rem;color:#7d4a48;margin-top:3px}
+.rel{margin-top:12px;font-size:.82rem;color:var(--ink-2)}
+.rel b{color:var(--pine)}
+.price{font-size:.8rem;color:var(--ink-2);margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
+.empty{text-align:center;color:var(--ink-2);padding:44px 16px;font-size:.92rem;background:#fff;border:1px dashed var(--line);border-radius:var(--radius)}
+
+/* panels */
+.panel{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:var(--shadow-sm);animation:fadeUp .4s ease both}
+.panel h2{font-family:var(--font-display);font-size:1.02rem;color:var(--pine);margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.panel h2:before{content:"";width:5px;height:20px;background:linear-gradient(var(--gold),var(--leaf));border-radius:3px;flex:0 0 5px}
+.step{display:flex;gap:13px;margin-bottom:14px}
+.step:last-child{margin-bottom:0}
+.step .n{flex:0 0 32px;height:32px;border-radius:11px;background:linear-gradient(140deg,var(--pine),var(--leaf));color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:600;font-size:.85rem;box-shadow:var(--shadow-sm)}
+.step b{font-size:.92rem;font-family:var(--font-display);font-weight:600;color:var(--ink)}
+.step p{font-size:.86rem;color:var(--ink-2);margin-top:1px}
+.callout{background:var(--gold-soft);border:1px solid #E4D2A8;border-radius:12px;padding:11px 14px;font-size:.85rem;color:#7A5F1E;margin-top:10px}
+.callout.red{background:var(--red-bg);border-color:#EFD3D2;color:var(--red)}
+
+/* glossary */
+.gl-grid{display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:760px){.gl-grid{grid-template-columns:1fr 1fr}}
+.gl{background:var(--mint-2);border:1px solid var(--line);border-radius:11px;padding:10px 13px}
+.gl b{color:var(--pine);font-size:.87rem;font-family:var(--font-display)}
+.gl p{font-size:.82rem;color:var(--ink-2);margin-top:2px}
+
+/* escalation */
+.esc{border-radius:13px;padding:14px 15px;margin-bottom:10px;border:1px solid}
+.esc .h{font-family:var(--font-display);font-weight:600;font-size:.9rem;display:flex;align-items:center;gap:8px}
+.esc p{font-size:.84rem;margin-top:5px}
+.esc.l1{background:var(--mint-2);border-color:#CDE0D2}.esc.l1 .h{color:var(--leaf)}
+.esc.l2{background:var(--amber-bg);border-color:#EBDDBB}.esc.l2 .h{color:var(--amber)}
+.esc.l3{background:var(--red-bg);border-color:#EFD3D2}.esc.l3 .h{color:var(--red)}
+.esc .tag{font-size:.62rem;border-radius:999px;padding:2px 10px;font-weight:700;letter-spacing:.05em}
+.esc.l1 .tag{background:var(--leaf);color:#fff}.esc.l2 .tag{background:var(--amber);color:#fff}.esc.l3 .tag{background:var(--red);color:#fff}
+
+/* do/dont */
+.dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:700px){.dd-grid{grid-template-columns:1fr}}
+.dd{border-radius:14px;padding:16px}
+.dd.do{background:var(--mint-2);border:1px solid #CDE0D2}
+.dd.dont{background:var(--red-bg);border:1px solid #EFD3D2}
+.dd h3{font-family:var(--font-display);font-size:.95rem;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.dd.do h3{color:var(--leaf)}.dd.dont h3{color:var(--red)}
+.dd li{font-size:.86rem;margin:0 0 9px 0;list-style:none;display:flex;gap:9px}
+.dd li svg{flex:0 0 16px;width:16px;height:16px;margin-top:3px}
+.dd.do li svg{color:var(--leaf)}.dd.dont li svg{color:var(--red)}
+.phrase{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+@media(max-width:700px){.phrase{grid-template-columns:1fr}}
+.phrase>div{border-radius:11px;padding:10px 13px;font-size:.84rem}
+.phrase .bad{background:var(--red-bg);border:1px solid #EFD3D2;color:#7d4a48}
+.phrase .good{background:var(--mint-2);border:1px solid #CDE0D2;color:var(--pine)}
+.phrase b{display:block;font-size:.68rem;letter-spacing:.06em;margin-bottom:3px;text-transform:uppercase}
+.phrase .bad b{color:var(--red)}.phrase .good b{color:var(--leaf)}
+
+/* roleplay */
+.rp-filter{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.rp-filter button{border:1.5px solid var(--line);background:#fff;padding:6px 14px;border-radius:999px;font-size:.8rem;cursor:pointer;font-family:inherit;color:var(--ink-2);font-weight:600;transition:.2s}
+.rp-filter button.active{background:var(--pine);border-color:var(--pine);color:#fff}
+.rp-scene{font-size:.85rem;color:var(--ink-2);font-style:italic;margin-bottom:14px;background:var(--mint-2);padding:9px 13px;border-radius:10px}
+.rp-tag{display:inline-block;font-size:.66rem;background:var(--gold-soft);color:#7A5F1E;border-radius:999px;padding:2px 10px;font-weight:700;margin-left:8px;vertical-align:middle}
+.bubble-row{display:flex;gap:9px;margin-bottom:10px;align-items:flex-end}
+.bubble-row.cust{flex-direction:row-reverse}
+.avatar{width:30px;height:30px;border-radius:50%;flex:0 0 30px;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;font-family:var(--font-display)}
+.bubble-row.cc .avatar{background:var(--pine);color:var(--gold)}
+.bubble-row.cust .avatar{background:#E8DFCB;color:#7A6A45}
+.bubble{max-width:78%;padding:10px 14px;border-radius:16px;font-size:.88rem;box-shadow:var(--shadow-sm)}
+.bubble-row.cc .bubble{background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px}
+.bubble-row.cust .bubble{background:linear-gradient(135deg,#F4EDDC,#EFE5CD);border:1px solid #E4D8BC;border-bottom-right-radius:5px}
+.lessons{background:var(--mint-2);border:1.5px dashed var(--leaf);border-radius:14px;padding:13px 15px;margin-top:14px}
+.lessons b{color:var(--pine);font-size:.86rem;font-family:var(--font-display)}
+.lessons li{font-size:.84rem;margin:6px 0 0 18px}
+
+/* quiz */
+.quiz-prog{background:#fff;border:1px solid var(--line);border-radius:999px;height:10px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+.quiz-prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--leaf),var(--gold));transition:width .4s ease;border-radius:999px}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:17px;margin-bottom:12px;box-shadow:var(--shadow-sm)}
+.quiz-q>p{font-weight:600;font-size:.93rem;margin-bottom:10px;font-family:var(--font-display)}
+.quiz-q>p .qn{color:var(--gold);margin-right:6px}
+.quiz-q label{display:flex;gap:10px;padding:10px 13px;border:1.5px solid var(--line);border-radius:11px;margin-bottom:7px;font-size:.87rem;cursor:pointer;transition:.18s;background:var(--mint-2)}
+.quiz-q label:hover{border-color:var(--leaf);background:#fff}
+.quiz-q label.correct{background:var(--mint);border-color:var(--leaf);font-weight:600}
+.quiz-q label.wrong{background:var(--red-bg);border-color:var(--red)}
+.quiz-q .expl{display:none;font-size:.8rem;color:var(--amber);background:var(--amber-bg);padding:9px 12px;border-radius:10px;margin-top:5px}
+.quiz-q.answered .expl{display:block}
+#quizScore{display:none;text-align:center;padding:22px;background:linear-gradient(135deg,var(--pine),var(--pine-2));border-radius:var(--radius);color:#fff;box-shadow:var(--shadow-lg);margin-top:8px}
+#quizScore .big{font-family:var(--font-display);font-weight:700;font-size:2rem;color:var(--gold)}
+#quizScore p{font-size:.88rem;opacity:.9;margin-top:4px}
+#quizScore button{margin-top:13px;border:1px solid var(--gold);background:transparent;color:var(--gold);font-family:inherit;padding:8px 22px;border-radius:999px;cursor:pointer;font-size:.85rem;font-weight:600;transition:.2s}
+#quizScore button:hover{background:var(--gold);color:var(--pine)}
+
+#toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(20px);opacity:0;z-index:99;background:var(--pine);color:#fff;padding:10px 22px;border-radius:999px;font-size:.85rem;pointer-events:none;transition:.3s;box-shadow:var(--shadow-lg)}
+@media(min-width:840px){#toast{bottom:34px}}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast b{color:var(--gold)}
+
+.foot{margin-top:30px;text-align:center;font-size:.7rem;color:var(--ink-2);line-height:1.7;padding:0 14px}
+.foot .ver{display:inline-block;margin-top:6px;border:1px solid var(--line);border-radius:999px;padding:2px 12px;background:#fff;font-size:.64rem}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#" onclick="return false">
+      <!-- [BRAND] โลโก้ทางการ (ไฟล์เดียวกับเว็บไซต์เครือ) โหลดออนไลน์
+           หากเปิดแบบ offline จะ fallback เป็นเวอร์ชันวาดอัตโนมัติ -->
+      <img class="mark-img" src="https://www.phyathai.com/images/pyt_logo.svg" alt="โรงพยาบาลพญาไท Phyathai Hospital"
+           onerror="this.style.display='none';document.getElementById('markFallback').style.display='flex'">
+      <span id="markFallback" style="display:none;align-items:center;gap:11px">
+      <svg class="mark-mol" viewBox="0 0 100 100" aria-label="Phyathai Hospital logo">
+        <!-- arms -->
+        <g stroke-linecap="round" fill="none">
+          <g stroke="#046A4E" stroke-width="4.5">
+            <line x1="33" y1="25" x2="17" y2="13"/><line x1="33" y1="25" x2="37" y2="7"/>
+            <line x1="33" y1="25" x2="51" y2="20"/><line x1="33" y1="25" x2="44" y2="40"/>
+          </g>
+          <g stroke="#98A0A0" stroke-width="4.5">
+            <line x1="75" y1="49" x2="90" y2="38"/><line x1="75" y1="49" x2="91" y2="62"/>
+            <line x1="75" y1="49" x2="62" y2="64"/><line x1="75" y1="49" x2="44" y2="40"/>
+          </g>
+          <g stroke="#7FCDA3" stroke-width="4.5">
+            <line x1="32" y1="76" x2="14" y2="64"/><line x1="32" y1="76" x2="13" y2="88"/>
+            <line x1="32" y1="76" x2="36" y2="93"/><line x1="32" y1="76" x2="49" y2="80"/>
+            <line x1="32" y1="76" x2="44" y2="40"/>
+          </g>
+        </g>
+        <!-- nodes -->
+        <g fill="#046A4E">
+          <circle cx="33" cy="25" r="8"/><circle cx="17" cy="13" r="5.5"/>
+          <circle cx="37" cy="7" r="5"/><circle cx="51" cy="20" r="6"/><circle cx="44" cy="40" r="5"/>
+        </g>
+        <g fill="#98A0A0">
+          <circle cx="75" cy="49" r="7"/><circle cx="90" cy="38" r="5"/>
+          <circle cx="91" cy="62" r="5.5"/><circle cx="62" cy="64" r="4.5"/>
+        </g>
+        <g fill="#7FCDA3">
+          <circle cx="32" cy="76" r="8"/><circle cx="14" cy="64" r="5.5"/>
+          <circle cx="13" cy="88" r="6"/><circle cx="36" cy="93" r="5"/><circle cx="49" cy="80" r="5.5"/>
+        </g>
+      </svg>
+      <div class="brand-name">
+        <div class="pyt">PHYATHAI</div>
+        <div class="hos">HOSPITAL</div>
+      </div>
+      </span>
+      <div class="brand-div"></div>
+      <div class="brand-sub">ศูนย์ศัลยกรรมตกแต่งและเสริมสร้าง · ศรีราชา<span>CALL CENTER ASSISTANT</span></div>
+    </a>
+    <div class="top-search">
+      <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="qTop" type="search" placeholder="พิมพ์คำที่ลูกค้าพูด เช่น คิ้วตก, ดูดไขมัน, นมหย่อน...">
+      <span class="kbd">/</span>
+    </div>
+    <div class="clock"><div class="t" id="clockT">--:--</div><div class="d" id="clockD"></div></div>
+  </div>
+</div>
+
+<div class="shell">
+  <aside class="side">
+    <nav id="sideNav">
+      <div class="sec">เมนูหลัก</div>
+      <button class="active" data-tab="products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>ค้นหา Product</button>
+      <button data-tab="script"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>สคริปต์รับสาย</button>
+      <button data-tab="knowledge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>ความรู้พื้นฐาน</button>
+      <button data-tab="dodont"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Do / Don't</button>
+      <button data-tab="roleplay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Role Play</button>
+      <button data-tab="quiz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>แบบทดสอบ</button>
+    </nav>
+    <div class="hotline">
+      <div class="h">ตอบไม่ได้ ส่งต่อทีมศูนย์</div>
+      <div class="n">[ช่องทาง/เบอร์จริง]</div>
+      <p>ห้ามเดาคำตอบทางการแพทย์ การส่งต่ออย่างมืออาชีพดีกว่าคำตอบผิด</p>
+    </div>
+    <div class="er">
+      <div class="h">อาการผิดปกติหลังผ่าตัด</div>
+      <div class="n">[เบอร์ ER / ward]</div>
+      <p>ปวดมากขึ้น บวมแดงร้อน ไข้ เลือดซึม หายใจลำบาก = โอนสายทันที ไม่ใช่ lead ขาย</p>
+    </div>
+  </aside>
+
+  <main>
+    <!-- PRODUCTS -->
+    <section id="products" class="tab active">
+      <div class="hero">
+        <div class="kicker">Plastic &amp; Reconstructive Surgery Center</div>
+        <h1>คู่มือรับสายศัลยกรรมตกแต่ง<br>ตอบมั่นใจ ทุกสายจบที่ Consult</h1>
+        <p>นพ.ดุลยณัฐ อรัณยะปาล (Dr. Ping) ศัลยแพทย์ตกแต่ง Board-certified · ผ่าตัดในโรงพยาบาล มีวิสัญญีแพทย์และ ICU backup</p>
+        <div class="stats">
+          <div class="stat"><div class="v">15</div><div class="k">หัตถการ</div></div>
+          <div class="stat"><div class="v">3</div><div class="k">กลุ่ม Face·Breast·Body</div></div>
+          <div class="stat"><div class="v">20+</div><div class="k">ปีประสบการณ์แพทย์</div></div>
+          <div class="stat"><div class="v">8</div><div class="k">Role Play ฝึกจริง</div></div>
+        </div>
+      </div>
+      <div class="m-search">
+        <svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="qM" type="search" placeholder="พิมพ์คำที่ลูกค้าพูด เช่น คิ้วตก, ดูดไขมัน...">
+      </div>
+      <div class="hotkw" id="hotkw"><span class="lbl">คำค้นยอดฮิต:</span></div>
+      <div class="chips" id="groupChips">
+        <button class="active" data-g="all">ทั้งหมด <span class="cnt">15</span></button>
+        <button data-g="Face">Face <span class="cnt">9</span></button>
+        <button data-g="Breast">Breast <span class="cnt">4</span></button>
+        <button data-g="Body">Body <span class="cnt">2</span></button>
+      </div>
+      <div class="cards" id="cards"></div>
+      <div class="empty" id="noResult" style="display:none">ไม่พบหัตถการที่ตรงกับคำค้น<br><small>ลองคำอื่น หรือส่งต่อทีมประสานงานศูนย์ [ช่องทางจริง]</small></div>
+    </section>
+
+    <!-- SCRIPT -->
+    <section id="script" class="tab">
+      <div class="panel">
+        <h2>โครงสร้าง 4 ขั้นของทุกสาย</h2>
+        <div class="step"><div class="n">1</div><div><b>รับฟัง</b><p>เปิดสายตามมาตรฐานเครือ ฟังความต้องการให้จบก่อน ไม่ขัด ไม่รีบเสนอ จับ keyword ที่ลูกค้าใช้ (เอาไปค้นในแท็บ Product ได้ทันที)</p></div></div>
+        <div class="step"><div class="n">2</div><div><b>ถามคัดกรอง 4 ข้อ</b><p>(1) อยากปรับ/แก้อะไร ตรงไหน กังวลอะไรที่สุด &nbsp;(2) เคยทำหัตถการนี้หรือใกล้เคียงมาก่อนไหม ที่ไหน เมื่อไหร่ &nbsp;(3) โรคประจำตัว/ยาที่ใช้ประจำ (โดยเฉพาะยาละลายลิ่มเลือด เบาหวาน ความดัน) &nbsp;(4) สะดวกพื้นที่ไหน ช่วงเวลาใด</p></div></div>
+        <div class="step"><div class="n">3</div><div><b>ให้ข้อมูล</b><p>ใช้ "คำตอบมาตรฐาน 1 ประโยค" ของหัตถการนั้น + ช่วงราคาเริ่มต้น [ตารางที่การตลาดอนุมัติ] + จุดขายที่ตรงกับ concern ของลูกค้า (ไม่ต้องพูดครบ 5 ข้อทุกสาย เลือกข้อที่ตรง)</p></div></div>
+        <div class="step"><div class="n">4</div><div><b>ปิดที่การนัด consult</b><p>เสนอวัน-เวลาแพทย์ออกตรวจ [ตาราง OPD] บอกสิ่งที่จะได้จากการ consult (ตรวจประเมินจริง แผนเฉพาะบุคคล ราคาชัดเจน) และบันทึก lead ให้ครบ</p></div></div>
+        <div class="callout">เรื่องราคา: บอกได้เฉพาะ "ช่วงราคาเริ่มต้น" ตามตารางที่อนุมัติ ราคาจริงยืนยันหลังแพทย์ประเมินเท่านั้น · โปรโมชัน/การผ่อนชำระ ตอบตามประกาศที่การตลาดแจ้งเท่านั้น [นโยบายการเงิน]</div>
+      </div>
+      <div class="panel">
+        <h2>ข้อมูล Lead ที่ต้องบันทึกทุกสาย</h2>
+        <div class="step"><div class="n">1</div><div><p><b>ชื่อ-นามสกุล</b> และคำนำหน้าที่ลูกค้าสะดวกให้เรียก</p></div></div>
+        <div class="step"><div class="n">2</div><div><p><b>เบอร์โทร/LINE</b> ช่องทางที่สะดวกให้ติดต่อกลับ และช่วงเวลาที่สะดวก</p></div></div>
+        <div class="step"><div class="n">3</div><div><p><b>หัตถการที่สนใจ</b> + concern หลัก (เช่น กลัวเจ็บ, กังวลแผล, เรื่องราคา) เพื่อให้ทีม consult เตรียมตอบตรงจุด</p></div></div>
+        <div class="step"><div class="n">4</div><div><p><b>ช่องทางที่รู้จักเรา</b> (Facebook / Google / คนแนะนำ / เคยเป็นคนไข้) เพื่อวัดผลการตลาด</p></div></div>
+        <div class="step"><div class="n">5</div><div><p><b>ประวัติสำคัญที่ลูกค้าเล่า</b> เช่น เคยผ่าตัดมาก่อน มีโรคประจำตัว (บันทึกสั้นๆ ไม่ต้องซัก)</p></div></div>
+        <div class="callout">SLA: นัด consult ภายใน 1-3 วันทำการ · lead ที่ยังไม่นัด follow up ภายใน [x วัน] · ส่งสรุป lead เข้าระบบ [ชื่อระบบ/ไฟล์] ก่อนจบกะ</div>
+      </div>
+      <div class="panel">
+        <h2>5 จุดขายหลัก + วิธีเลือกใช้</h2>
+        <div class="step"><div class="n">1</div><div><b>หมอเฉพาะทาง</b><p>ศัลยแพทย์ตกแต่ง board-certified 20+ ปี ฝึกอบรมจากเกาหลีใต้ · ใช้เมื่อลูกค้าถามว่า "หมอใครทำ เก่งไหม"</p></div></div>
+        <div class="step"><div class="n">2</div><div><b>ความปลอดภัยระดับโรงพยาบาล</b><p>ห้องผ่าตัดมาตรฐาน วิสัญญีแพทย์ ICU backup · ใช้เมื่อลูกค้ากลัว/เคยเห็นข่าวคลินิก</p></div></div>
+        <div class="step"><div class="n">3</div><div><b>ครบวงจร รับเคสยาก</b><p>ทั้งความงามและเสริมสร้าง เคสแก้ เคสซับซ้อน · ใช้เมื่อลูกค้าเคยทำมาแล้วมีปัญหา</p></div></div>
+        <div class="step"><div class="n">4</div><div><b>เครือ BDMS</b><p>ประสานงานส่งต่อในเครือพญาไท-เปาโลสะดวก ประวัติเชื่อมถึงกัน · ใช้กับลูกค้าที่เป็นคนไข้เครืออยู่แล้ว</p></div></div>
+        <div class="step"><div class="n">5</div><div><b>ดูแลต่อเนื่อง</b><p>ระบบ follow-up ชัดเจน มีทีมติดตามหลังผ่าตัด · ใช้เมื่อลูกค้ากังวลว่า "ทำแล้วทิ้ง"</p></div></div>
+        <div class="callout">เลือกใช้ทีละ 1-2 ข้อที่ตรงกับ concern อย่าท่องครบ 5 ข้อรวดเดียว จะฟังเหมือนอ่านสคริปต์</div>
+      </div>
+    </section>
+
+    <!-- KNOWLEDGE -->
+    <section id="knowledge" class="tab">
+      <div class="panel">
+        <h2>ศัพท์ที่ต้องรู้ (Glossary)</h2>
+        <div class="gl-grid">
+          <div class="gl"><b>ยาชาเฉพาะที่ (Local Anesthesia)</b><p>ฉีดชาเฉพาะบริเวณ ลูกค้ารู้สึกตัวตลอด ใช้กับหัตถการเล็ก เช่น ทำตา ปาก ลดหัวนม ทำเสร็จกลับบ้านได้</p></div>
+          <div class="gl"><b>ยาสลบ (General Anesthesia)</b><p>หลับตลอดการผ่าตัด ต้องมีวิสัญญีแพทย์ดูแล และต้องงดน้ำงดอาหารก่อนผ่าตัดตามคำสั่งแพทย์ ใช้กับผ่าตัดใหญ่ เช่น เสริมหน้าอก หน้าท้อง</p></div>
+          <div class="gl"><b>ยานอนหลับร่วมยาชา (Sedation)</b><p>ครึ่งหลับครึ่งตื่น สบายขึ้นแต่ไม่ต้องใส่ท่อช่วยหายใจ แพทย์เลือกใช้ในบางหัตถการ</p></div>
+          <div class="gl"><b>Board-certified</b><p>ได้วุฒิบัตรเฉพาะทางศัลยศาสตร์ตกแต่งจากแพทยสภา ผ่านการฝึกอบรมเฉพาะทางหลายปี ต่างจาก "หมอที่มาทำศัลยกรรม" ทั่วไป</p></div>
+          <div class="gl"><b>Endoscopic (ผ่านกล้อง)</b><p>ใช้กล้องขนาดเล็กส่องเข้าไปช่วยผ่าตัด แผลเล็กกว่า แพทย์เห็นชัดกว่าการเลาะแบบไม่เห็นภาพ (blind)</p></div>
+          <div class="gl"><b>Implant / ซิลิโคน</b><p>ถุงซิลิโคนทางการแพทย์สำหรับเสริมหน้าอก มีหลายแบรนด์หลายรุ่น [Motiva / Mentor ตาม stock] แต่ละรุ่นผิวสัมผัสและทรงต่างกัน</p></div>
+          <div class="gl"><b>Capsular Contracture (แคปซูลหดรัด)</b><p>พังผืดรอบซิลิโคนหดตัวจนเต้านมแข็ง/ผิดทรง เป็นเหตุผลที่ลูกค้ามาแก้เคสเดิม ศูนย์เรารับแก้ได้</p></div>
+          <div class="gl"><b>Fat Grafting (เติมไขมันตัวเอง)</b><p>ดูดไขมันตัวเองแล้วฉีดกลับไปเติมส่วนที่ต้องการ เช่น หน้าแก้มตอบ มักทำร่วมกับดึงหน้า/ดูดไขมัน</p></div>
+          <div class="gl"><b>Downtime / พักฟื้น</b><p>ช่วงเวลาที่บวมช้ำหรือต้องหยุดงาน แต่ละหัตถการไม่เท่ากัน ดูตัวเลขในการ์ด product (ค่าประมาณ ยืนยันทีมแพทย์)</p></div>
+          <div class="gl"><b>Consult / ปรึกษาแพทย์</b><p>นัดพบแพทย์เพื่อตรวจประเมินจริง วางแผนเฉพาะบุคคล และยืนยันราคา ทุกสายควรจบที่ขั้นนี้ [ค่าบริการ consult ตามประกาศ]</p></div>
+          <div class="gl"><b>OPD / IPD</b><p>OPD = ผู้ป่วยนอก ทำเสร็จกลับบ้าน · IPD = นอนโรงพยาบาล ผ่าตัดใหญ่อย่างหน้าอก/หน้าท้องมักเป็น IPD</p></div>
+          <div class="gl"><b>Revision / เคสแก้</b><p>การผ่าตัดแก้ไขจากที่เคยทำมาแล้ว ซับซ้อนกว่าเคสแรกเสมอ ต้องนำประวัติการผ่าตัดเดิมมาด้วยตอน consult</p></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>การเตรียมตัวก่อนผ่าตัด (แนวทางทั่วไปที่ตอบลูกค้าได้)</h2>
+        <div class="step"><div class="n">1</div><div><p><b>แจ้งข้อมูลสุขภาพครบ:</b> โรคประจำตัว ยาที่ใช้ (โดยเฉพาะยาละลายลิ่มเลือด แอสไพริน) วิตามิน/สมุนไพร ประวัติแพ้ยา ประวัติแผลเป็นนูน (keloid)</p></div></div>
+        <div class="step"><div class="n">2</div><div><p><b>งดสูบบุหรี่/แอลกอฮอล์</b> ตามระยะที่แพทย์กำหนด [x สัปดาห์] เพราะมีผลต่อการหายของแผลชัดเจน</p></div></div>
+        <div class="step"><div class="n">3</div><div><p><b>ถ้าใช้ยาสลบ:</b> งดน้ำงดอาหารตามคำสั่งแพทย์ และต้องมีญาติ/ผู้ดูแลมารับกลับ ห้ามขับรถเอง</p></div></div>
+        <div class="step"><div class="n">4</div><div><p><b>ตรวจประเมินก่อนผ่าตัด:</b> ตรวจเลือด/ตรวจร่างกายตามรายการที่แพทย์สั่ง [รายการและค่าใช้จ่ายตามประกาศ]</p></div></div>
+        <div class="callout">รายละเอียดจริงของแต่ละเคสให้ยึดคำสั่งแพทย์เป็นหลัก call center ตอบได้ระดับแนวทางทั่วไปเท่านั้น</div>
+      </div>
+
+      <div class="panel">
+        <h2>กลุ่มที่ต้องแจ้งให้มาปรึกษาแพทย์ก่อน (อย่าปฏิเสธเอง อย่ารับปากเอง)</h2>
+        <div class="step"><div class="n">!</div><div><p>ตั้งครรภ์หรือให้นมบุตร · เบาหวาน/ความดันที่คุมไม่ได้ · โรคหัวใจ โรคเลือด หรือใช้ยาละลายลิ่มเลือด · ประวัติแพ้ยาสลบ · แผลเป็นนูน keloid · โรคทางจิตเวชที่มีผลต่อการตัดสินใจ · อายุต่ำกว่า 20 ปี [ต้องมีผู้ปกครองยินยอม เช็คนโยบาย รพ.]</p></div></div>
+        <div class="callout">คำตอบมาตรฐาน: "กรณีนี้ต้องให้คุณหมอประเมินเป็นรายบุคคลค่ะ/ครับ ขออนุญาตนัดปรึกษาโดยแจ้งข้อมูลนี้ให้ทีมแพทย์ทราบล่วงหน้า" แล้วบันทึกใน lead</div>
+      </div>
+
+      <div class="panel">
+        <h2>การเงิน ประกัน และเอกสาร</h2>
+        <div class="gl-grid">
+          <div class="gl"><b>ประกันสุขภาพครอบคลุมไหม</b><p>ศัลยกรรมเพื่อความงามโดยทั่วไปเบิกประกันไม่ได้ ส่วนการผ่าตัดเสริมสร้าง (เช่น แผล อุบัติเหตุ) บางกรณีอาจเบิกได้ แนะนำลูกค้าเช็คกรมธรรม์กับบริษัทประกัน และทีมเราช่วยออกเอกสารให้ได้ [ยืนยัน workflow]</p></div>
+          <div class="gl"><b>วิธีชำระเงิน / ผ่อนชำระ</b><p>[นโยบายการเงินของ รพ.: เงินสด บัตรเครดิต ผ่อน 0% กี่เดือน ธนาคารไหน ยอดขั้นต่ำเท่าไหร่ ให้ใส่ตามประกาศจริง]</p></div>
+          <div class="gl"><b>ใบรับรองแพทย์ / ลางาน</b><p>ขอใบรับรองแพทย์ได้หลังผ่าตัด ระยะเวลาพักตามดุลยพินิจแพทย์ ค่าธรรมเนียมตามประกาศ รพ.</p></div>
+          <div class="gl"><b>ลูกค้าต่างชาติ</b><p>พื้นที่ศรีราชา/EEC มีลูกค้าต่างชาติมาก [ล่าม/บริการภาษา ญี่ปุ่น อังกฤษ จีน: ใส่ตามบริการจริงของ รพ.] จองคิว consult ช่องทางเดียวกัน</p></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Escalation 3 ระดับ: สายแบบไหน ส่งใคร</h2>
+        <div class="esc l1">
+          <div class="h"><span class="tag">ระดับ 1</span> ตอบเองได้</div>
+          <p>ข้อมูลหัตถการระดับภาพรวม จุดขาย ช่วงราคาเริ่มต้น การนัด consult การเตรียมตัวทั่วไป ทุกอย่างที่อยู่ใน app นี้และไม่ใช่ [placeholder]</p>
+        </div>
+        <div class="esc l2">
+          <div class="h"><span class="tag">ระดับ 2</span> ส่งต่อทีมประสานงานศูนย์ [ช่องทาง]</div>
+          <p>คำถามทางการแพทย์เชิงลึก เคสแก้ซับซ้อน ลูกค้ามีโรคประจำตัวหลายอย่าง ขอคุยกับพยาบาล/แพทย์ ต่อรองราคาเกินตาราง คำร้องเรียนที่ไม่เร่งด่วน · แจ้งลูกค้าว่าจะติดต่อกลับภายใน [x ชม.]</p>
+        </div>
+        <div class="esc l3">
+          <div class="h"><span class="tag">ระดับ 3</span> ด่วน: โอนสายทันที [เบอร์ ER/ward]</div>
+          <p>ผู้ป่วยหลังผ่าตัดโทรมาด้วยอาการผิดปกติ: ปวดมากขึ้นเรื่อยๆ บวมตึงข้างเดียว แผลแดงร้อน มีไข้ เลือด/หนองซึม แน่นหน้าอก หายใจลำบาก ปวดน่อง/ขาบวม · นี่คือเรื่องความปลอดภัยผู้ป่วย ไม่ใช่งานขาย ห้ามให้รอ callback</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Patient Journey เต็มเส้นทาง (เล่าให้ลูกค้าฟังได้)</h2>
+        <div class="step"><div class="n">1</div><div><b>โทร/ทักมา</b><p>คุยกับ call center ได้ข้อมูลเบื้องต้น + นัด consult</p></div></div>
+        <div class="step"><div class="n">2</div><div><b>Consult กับแพทย์</b><p>ตรวจประเมินจริง วางแผนเฉพาะบุคคล ยืนยันราคา ถามได้ทุกข้อสงสัย ยังไม่ต้องตัดสินใจวันนั้น</p></div></div>
+        <div class="step"><div class="n">3</div><div><b>เตรียมผ่าตัด</b><p>ตรวจร่างกาย/ตรวจเลือดตามแพทย์สั่ง รับคำแนะนำเตรียมตัว นัดวันผ่าตัด</p></div></div>
+        <div class="step"><div class="n">4</div><div><b>วันผ่าตัด</b><p>ผ่าตัดในห้องผ่าตัดโรงพยาบาล ทีมวิสัญญีดูแล หัตถการเล็กกลับบ้านได้ หัตถการใหญ่นอนพักตามแผน</p></div></div>
+        <div class="step"><div class="n">5</div><div><b>ติดตามผล</b><p>นัด follow-up ตามระยะ [ตารางนัดมาตรฐานของศูนย์] มีช่องทางติดต่อเมื่อมีอาการผิดปกติตลอด</p></div></div>
+      </div>
+    </section>
+
+    <!-- DO/DONT -->
+    <section id="dodont" class="tab">
+      <div class="panel">
+        <h2>กติกาการสื่อสาร (แนวทาง สบส. + ประกาศแพทยสภา 39/2567)</h2>
+        <p style="font-size:.85rem;color:var(--ink-2);margin-bottom:14px">สิ่งที่พูดทางโทรศัพท์คือการสื่อสารของสถานพยาบาล มีผลทางกฎหมายเช่นเดียวกับการโฆษณา</p>
+        <div class="dd-grid">
+          <div class="dd do">
+            <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Do · ทำ</h3>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>พูดข้อเท็จจริงเกี่ยวกับหัตถการ แพทย์ และมาตรฐานโรงพยาบาล</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>บอกเสมอว่า "ผลลัพธ์ขึ้นกับแต่ละบุคคล"</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>ให้ช่วงราคาเริ่มต้นตามตารางที่อนุมัติแล้วเท่านั้น</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>ชวนเข้ามาปรึกษาแพทย์เพื่อประเมินรายบุคคล</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>ใช้ตัวเลขสถิติที่ verify และอนุมัติแล้วเท่านั้น</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>ยอมรับเมื่อไม่รู้ แล้วส่งต่ออย่างมืออาชีพ</li>
+            </ul>
+          </div>
+          <div class="dd dont">
+            <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg> Don't · ห้าม</h3>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg>การันตีผลลัพธ์: "สวยแน่นอน" "เหมือนดารา" "หายเป็นปกติ 100%"</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg>"ปลอดภัย 100%" "ไม่เจ็บเลย" "ไม่มีความเสี่ยง"</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg>ยืนยันราคาสุดท้าย หรือลดราคาเองนอกโปรโมชัน</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg>วินิจฉัย/เลือกเทคนิคแทนแพทย์ทางโทรศัพท์</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg>เปรียบเทียบเชิงลบหรือพาดพิงสถานพยาบาลอื่น</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg>อ้างตัวเลขเคส/ความพึงพอใจที่ยังไม่ verify</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg>กดดันให้รีบตัดสินใจ/รีบโอนมัดจำ</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>เปลี่ยนประโยคต้องห้าม เป็นประโยคที่ใช้ได้</h2>
+        <div class="phrase">
+          <div class="bad"><b>ห้ามพูด</b>"ทำแล้วสวยแน่นอนค่ะ"</div>
+          <div class="good"><b>พูดแบบนี้แทน</b>"คุณหมอจะออกแบบให้เข้ากับโครงหน้าของเราค่ะ ผลลัพธ์แต่ละท่านไม่เหมือนกัน เข้ามาปรึกษาก่อนได้ค่ะ"</div>
+          <div class="bad"><b>ห้ามพูด</b>"ไม่เจ็บเลยค่ะ สบายมาก"</div>
+          <div class="good"><b>พูดแบบนี้แทน</b>"ระหว่างทำมียาชา/ยาสลบดูแลค่ะ หลังทำอาจตึงระบมได้ ซึ่งมียาและทีมดูแลต่อเนื่องค่ะ"</div>
+          <div class="bad"><b>ห้ามพูด</b>"ที่อื่นทำแล้วพัง มาที่เราดีกว่า"</div>
+          <div class="good"><b>พูดแบบนี้แทน</b>"ของเราผ่าตัดในโรงพยาบาล มีวิสัญญีแพทย์ และรับดูแลเคสแก้ด้วยค่ะ"</div>
+          <div class="bad"><b>ห้ามพูด</b>"ราคานี้เลยค่ะ คอนเฟิร์ม"</div>
+          <div class="good"><b>พูดแบบนี้แทน</b>"ราคาเริ่มต้นอยู่ที่ [ช่วง] ค่ะ ราคาจริงคุณหมอยืนยันหลังตรวจประเมิน จะได้ตรงกับเคสของเราจริงๆ ค่ะ"</div>
+          <div class="bad"><b>ห้ามพูด</b>"เคสแบบพี่ ทำแผลเล็กพอ"</div>
+          <div class="good"><b>พูดแบบนี้แทน</b>"มีทั้งแบบแผลเล็กและแผลยาวค่ะ แบบไหนเหมาะ คุณหมอต้องดูสภาพจริงก่อนค่ะ"</div>
+          <div class="bad"><b>ห้ามพูด</b>"โอนมัดจำเลยวันนี้ เดี๋ยวโปรหมด"</div>
+          <div class="good"><b>พูดแบบนี้แทน</b>"โปรโมชันมีถึง [วันที่ตามประกาศ] ค่ะ แนะนำเข้ามาปรึกษาคุณหมอก่อน ตัดสินใจแล้วค่อยจองได้ค่ะ"</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROLEPLAY -->
+    <section id="roleplay" class="tab">
+      <div class="note" style="margin:0 0 14px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        <span>โทนแบรนด์พญาไท: อบอุ่น จริงใจ เป็นมืออาชีพ ไม่เร่งปิดการขาย · [ถ้อยคำ brand ทางการให้การตลาดเครือ review ก่อนใช้อบรมจริง]</span>
+      </div>
+      <div class="rp-filter" id="rpFilter">
+        <button class="active" data-f="all">ทั้งหมด (8)</button>
+        <button data-f="Face">Face</button>
+        <button data-f="Breast">Breast</button>
+        <button data-f="Body">Body</button>
+        <button data-f="Advanced">สายยาก</button>
+      </div>
+      <div id="rpList"></div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="tab">
+      <div class="quiz-prog"><i id="quizBar"></i></div>
+      <div id="quizList"></div>
+      <div id="quizScore"></div>
+    </section>
+
+    <div class="foot">
+      เครื่องมือช่วยงานภายในสำหรับ call center เท่านั้น ห้ามเผยแพร่ภายนอก · ข้อความใน [วงเล็บเหลี่ยม] คือข้อมูลที่รอยืนยัน ห้ามนำไปตอบลูกค้า<br>
+      ตัวเลขเวลาผ่าตัด/นอน รพ./พักฟื้น เป็นค่าประมาณสำหรับสื่อสารเบื้องต้น ต้องยืนยันโดยทีมแพทย์ · ราคาจริงยืนยันหลังแพทย์ประเมินเท่านั้น<br>
+      จัดทำโดย นพ.ดุลยณัฐ อรัณยะปาล ศูนย์ศัลยกรรมตกแต่งและเสริมสร้าง รพ.พญาไท ศรีราชา
+      <div class="ver">v2.0 DRAFT · รอการตลาดเครือ approve ราคา/ตัวเลข/brand assets · ทีมแพทย์ verify ข้อมูลคลินิก</div>
+    </div>
+  </main>
+</div>
+
+<div class="bottomnav" id="bottomNav">
+  <button class="active" data-tab="products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>ค้นหา</button>
+  <button data-tab="script"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>สคริปต์</button>
+  <button data-tab="knowledge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>ความรู้</button>
+  <button data-tab="dodont"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>กติกา</button>
+  <button data-tab="roleplay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>ฝึกพูด</button>
+  <button data-tab="quiz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>ทดสอบ</button>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ================= PRODUCT DATA ================= */
+/* spec: anes=การระงับความรู้สึก, or=เวลาผ่าตัดโดยประมาณ, stay=นอน รพ., rec=กลับไปทำงาน/ใช้ชีวิตปกติ
+   ค่าทั้งหมดเป็นค่าประมาณเพื่อสื่อสารเบื้องต้น ต้อง verify โดยทีมแพทย์ก่อนใช้อบรมจริง */
+const PRODUCTS=[
+{g:"Face",ab:"FL",th:"ดึงหน้า + ยกกระชับลำคอ",en:"Facelift + Neck Lift",
+ what:"ผ่าตัดยกกระชับแก้ม คอ และกรอบหน้า (jawline) โดยจัดการชั้นโครงสร้างใต้ผิว (SMAS) ไม่ใช่แค่ดึงผิวหนัง สำหรับความหย่อนคล้อยที่ร้อยไหมหรือเครื่องมือไม่ตอบโจทย์แล้ว",
+ who:"ใบหน้าหย่อนคล้อยชัดเจน แก้มห้อย เหนียงหย่อน มักอายุ 45+ หรือหลังลดน้ำหนักมาก ทำร่วมกับ fat grafting เพื่อคืน volume ได้",
+ kw:["ดึงหน้า","หน้าเหี่ยว","แก้มหย่อน","เหนียง","หน้าคล้อย","facelift"],
+ ans:"เป็นการผ่าตัดยกกระชับที่แก้ที่โครงสร้าง ผลอยู่ได้นานกว่าร้อยไหม แพทย์จะประเมินความหย่อนคล้อยตอน consult ค่ะ/ครับ",
+ spec:{anes:"ยาสลบ/ยานอนหลับร่วมยาชา*",or:"3-4 ชม.*",stay:"1 คืน*",rec:"2-3 สัปดาห์*"},
+ faq:[["ต่างจากร้อยไหมยังไง","ผ่าตัดแก้ที่ชั้นโครงสร้างใบหน้า ผลชัดเจนและอยู่นานกว่า เหมาะกับความหย่อนที่มากแล้ว ร้อยไหมเหมาะกับความหย่อนระยะแรก"],["แผลเห็นไหม","ซ่อนตามแนวหน้าหู/หลังหู/ไรผม ช่วงแรกเป็นรอยแดงแล้วจางลงตามเวลา"],["อยู่ได้กี่ปี","ผลอยู่ได้หลายปี แต่ใบหน้ายังแก่ตามธรรมชาติ ไม่มีการผ่าตัดใดหยุดอายุได้ (ห้ามการันตีตัวเลขปี)"],["ทำพร้อมอย่างอื่นได้ไหม","มักทำร่วมกับดึงหน้าผาก ทำตา หรือเติมไขมัน แพทย์วางแผนรวมตอน consult"]],
+ red:["บวมตึงข้างเดียวมากขึ้นเร็ว (อาจมีเลือดคั่ง)","แผลแดงร้อน มีไข้","ชาผิดปกติไม่ดีขึ้น"],
+ rel:"ดึงหน้าผากผ่านกล้อง · ทำตา · Fat grafting",
+ note:"ลูกค้ามักเทียบกับร้อยไหม/HIFU ห้ามบอกว่าอย่างอื่นไม่ดี ให้อธิบายว่าแก้คนละระดับปัญหา แล้วชวนมาประเมิน"},
+{g:"Face",ab:"EF",th:"ดึงหน้าผากผ่านกล้อง",en:"Endoscopic Forehead Lift (Endotine)",
+ what:"ยกคิ้วและหน้าผากที่หย่อนผ่านกล้อง แผลเล็ก 3-5 จุดซ่อนในไรผม ยึดตำแหน่งใหม่ด้วย Endotine ซึ่งสลายได้เอง ไม่ต้องผ่าตัดเอาออก",
+ who:"คิ้วตก หน้าผากหย่อน ตาดูง่วง/เศร้าจากคิ้วตก ริ้วรอยหน้าผากจากการเลิกคิ้วชดเชย เทคนิคที่แพทย์ฝึกจากโซล เกาหลีใต้",
+ kw:["คิ้วตก","ยกคิ้ว","ดึงหน้าผาก","หน้าเศร้า","ตาง่วง","endotine"],
+ ans:"เป็นการยกคิ้วและหน้าผากผ่านกล้อง แผลเล็กซ่อนในผม ฟื้นตัวเร็วกว่าแบบแผลยาวค่ะ/ครับ แพทย์จะประเมินว่าปัญหาอยู่ที่คิ้วหรือหนังตา",
+ spec:{anes:"ยาสลบ/sedation*",or:"1.5-2 ชม.*",stay:"ไม่นอน-1 คืน*",rec:"1-2 สัปดาห์*"},
+ faq:[["Endotine คืออะไร","อุปกรณ์ยึดเนื้อเยื่อขนาดเล็กที่สลายได้เองภายในราว 1 ปี ไม่ต้องผ่าตัดเอาออก"],["ต่างจากทำตายังไง","บางคนตาง่วงเพราะคิ้วตก ไม่ใช่หนังตาเกิน ถ้าไปตัดหนังตาอย่างเดียวคิ้วจะยิ่งตก แพทย์ต้องแยกให้"],["ผมร่วงตรงแผลไหม","บริเวณแผลอาจมีผมบางชั่วคราวได้ ส่วนใหญ่กลับมาปกติ (รายละเอียดให้แพทย์อธิบาย)"]],
+ red:["บวมตึงมากขึ้นเร็ว","แผลในไรผมแดงร้อน มีไข้","การมองเห็นผิดปกติ = ด่วนมาก"],
+ rel:"ทำตาสองชั้น · แก้ถุงใต้ตา · ดึงหน้า",
+ note:"ลูกค้าที่บอก 'หนังตาตก' จำนวนหนึ่งจริงๆ ต้องแก้ที่คิ้ว ห้ามฟันธงทางโทรศัพท์ นี่คือ signature เทคนิคของศูนย์"},
+{g:"Face",ab:"UB",th:"ทำตาสองชั้นแผลยาว",en:"Upper Blepharoplasty (Full Incision)",
+ what:"ตาสองชั้นแบบกรีดเต็มแนวชั้นตา เอาหนังตาและไขมันส่วนเกินออกได้จริง เย็บสร้างชั้นตาใหม่ที่ถาวร",
+ who:"หนังตาหย่อน หนังตาเยอะ ไขมันเปลือกตาเยอะ อายุมาก หรือต้องการผลถาวรชัดเจน",
+ kw:["ทำตาสองชั้น","หนังตาตก","ตาปรือ","ชั้นตาไม่ชัด","ตาสองชั้น"],
+ ans:"แบบแผลยาวเหมาะกับคนหนังตาเยอะ เพราะเอาหนังส่วนเกินออกได้จริง ผลถาวรค่ะ/ครับ แบบไหนเหมาะต้องให้แพทย์ดูสภาพหนังตาก่อน",
+ spec:{anes:"ยาชาเฉพาะที่",or:"1-1.5 ชม.*",stay:"ไม่ต้องนอน รพ.",rec:"ตัดไหม ~7 วัน*"},
+ faq:[["บวมนานไหม","บวมมากสุด 1-2 สัปดาห์แรก เริ่มดูเป็นธรรมชาติราว 1 เดือน และเข้าที่เต็มที่ราว 3-6 เดือน*"],["เจ็บไหม","ฉีดยาชาตอนแรกเจ็บเล็กน้อย ระหว่างทำไม่เจ็บ หลังทำตึงระบมได้ มียาแก้ปวดให้"],["กลับไปทำงานได้เมื่อไหร่","งานออฟฟิศส่วนใหญ่หลังตัดไหม ยังมีบวมเขียวได้ ใส่แว่นช่วยได้*"],["แต่งหน้าได้เมื่อไหร่","รอแผลปิดสนิทตามคำแนะนำแพทย์*"]],
+ red:["ปวดตามากขึ้น มองไม่ชัด = ด่วนมาก","แผลแดงร้อน มีหนอง","เลือดออกไม่หยุด"],
+ rel:"ดึงหน้าผากผ่านกล้อง · แก้ถุงใต้ตา · Sub-brow lift",
+ note:"มีภาพ before/after timeline 7 และ 14 วันประกอบ ใช้เมื่อลูกค้าถามเรื่องระยะบวม"},
+{g:"Face",ab:"UB",th:"ทำตาสองชั้นแผลเล็ก",en:"Upper Blepharoplasty (Small Incision)",
+ what:"สร้างชั้นตาด้วยแผลขนาดเล็ก เอาไขมันออกได้บางส่วน ฟื้นตัวเร็วกว่าแบบแผลยาว",
+ who:"อายุน้อย หนังตาไม่เยอะ ไขมันไม่มาก อยากได้ชั้นตาชัดขึ้นโดย downtime สั้น",
+ kw:["ทำตาแผลเล็ก","เย็บชั้นตา","ตาสองชั้นธรรมชาติ","ทำตาไม่กรีด"],
+ ans:"แบบแผลเล็กฟื้นตัวเร็ว เหมาะกับคนหนังตาไม่เยอะค่ะ/ครับ ถ้าหนังตาเยอะแพทย์อาจแนะนำแบบแผลยาว ต้องประเมินก่อน",
+ spec:{anes:"ยาชาเฉพาะที่",or:"~1 ชม.*",stay:"ไม่ต้องนอน รพ.",rec:"บวมน้อยกว่าแผลยาว*"},
+ faq:[["แบบไหนดีกว่า","ไม่มีแบบไหนดีกว่าในตัวเอง ขึ้นกับสภาพหนังตา ถ้าหนังเยอะแล้วฝืนทำแผลเล็ก ชั้นตาอาจหลุด/ไม่เก็บหนังส่วนเกิน"],["ชั้นตาหลุดได้ไหม","มีโอกาสมากกว่าแบบแผลยาวในบางราย แพทย์จะเลือกเทคนิคที่เสี่ยงต่ำสุดให้"]],
+ red:["ปวดตามาก มองไม่ชัด = ด่วนมาก","บวมแดงมีหนอง"],
+ rel:"ทำตาแผลยาว · ดึงหน้าผากผ่านกล้อง",
+ note:"คำถาม 'แบบไหนดีกว่า' คือคำถามยอดฮิตของกลุ่มตา ตอบมาตรฐานแล้วปิดที่นัด consult"},
+{g:"Face",ab:"LB",th:"แก้ถุงใต้ตา",en:"Lower Blepharoplasty",
+ what:"ผ่าตัดจัดการถุงไขมันใต้ตา เอาออกหรือเกลี่ยลงร่องแก้ม (fat repositioning) พร้อมตัดหนังส่วนเกินถ้าจำเป็น ในรายที่ฟิลเลอร์ช่วยไม่ได้",
+ who:"ถุงใต้ตาชัด ร่องใต้ตาลึก หนังใต้ตาย่น ดูโทรม ดูเหนื่อยตลอดเวลา",
+ kw:["ถุงใต้ตา","ขอบตาดำ","ใต้ตาย่น","หน้าโทรม","ร่องใต้ตา"],
+ ans:"เป็นการเอาถุงไขมันใต้ตาออกหรือจัดเรียงใหม่ค่ะ/ครับ ส่วนรอยดำใต้ตาเป็นเรื่องสีผิว การผ่าตัดช่วยเรื่องถุงและเงาเป็นหลัก",
+ spec:{anes:"ยาชา/ร่วม sedation*",or:"1-2 ชม.*",stay:"ไม่ต้องนอน รพ.*",rec:"บวมเขียว 1-2 สัปดาห์*"},
+ faq:[["แก้ขอบตาดำได้ไหม","แก้ถุงและเงาจากถุง ไม่ได้แก้สีผิวโดยตรง ถ้าปัญหาหลักคือสีผิวแพทย์จะแนะนำทางเลือกอื่น"],["ทำพร้อมตาบนได้ไหม","ได้ในหลายราย ประหยัดการพักฟื้นรอบเดียว แพทย์ประเมิน"],["ฟิลเลอร์กับผ่าตัดเลือกอะไร","ถุงไขมันชัด = ผ่าตัดตอบโจทย์กว่า ร่องเล็กน้อย = ฟิลเลอร์อาจพอ ให้แพทย์ประเมิน"]],
+ red:["ปวดตามาก การมองเห็นผิดปกติ = ด่วนมาก","เลือดออกใต้ตาไม่หยุด"],
+ rel:"ทำตาบน · ดึงหน้าผากผ่านกล้อง · Fat grafting",
+ note:"มีภาพ before/after upper + lower ที่ 1 เดือน"},
+{g:"Face",ab:"CR",th:"เสริมจมูกแบบ Closed",en:"Closed Rhinoplasty",
+ what:"เสริมจมูกผ่านแผลที่ซ่อนในรูจมูกทั้งหมด ไม่มีแผลภายนอก วางซิลิโคนทางการแพทย์หรือเสริมปลายด้วยเนื้อเยื่อตัวเอง",
+ who:"เคสเสริมครั้งแรก โครงสร้างไม่ซับซ้อน อยากได้สันจมูกชัดขึ้น downtime สั้น",
+ kw:["เสริมจมูก","ทำจมูก","ซิลิโคนจมูก","จมูกโด่ง"],
+ ans:"แบบ closed แผลซ่อนในรูจมูก ไม่มีแผลด้านนอก ฟื้นตัวเร็วค่ะ/ครับ เหมาะกับเคสไม่ซับซ้อน แพทย์จะประเมินโครงจมูกตอน consult",
+ spec:{anes:"ยาชา/ร่วม sedation*",or:"1-2 ชม.*",stay:"ไม่ต้องนอน รพ.*",rec:"บวมหลัก 1-2 สัปดาห์*"},
+ faq:[["ใช้วัสดุอะไร","ซิลิโคนทางการแพทย์ และมักเสริมปลายจมูกด้วยเนื้อเยื่อตัวเอง (เช่น กระดูกอ่อนหลังหู) เพื่อลดความเสี่ยงปลายทะลุ แพทย์เลือกตามโครงจมูก"],["ใส่แกนกี่วันถึงเข้าที่","รูปทรงหลักเห็นใน 2-4 สัปดาห์ เข้าที่เต็มที่หลายเดือน*"],["ล้างหน้า/ใส่แว่นได้เมื่อไหร่","ตามคำแนะนำแพทย์หลังตัดไหม/ถอดเฝือก*"]],
+ red:["ปลายจมูกซีดขาว/คล้ำ = ด่วนมาก (เลือดไม่เลี้ยง)","เลือดกำเดาไหลไม่หยุด","ปวดมากขึ้น มีไข้"],
+ rel:"Open/Semi-open · Rib rhinoplasty · ตัดปีกจมูก [ถ้ามีบริการ ระบุ]",
+ note:""},
+{g:"Face",ab:"OR",th:"เสริมจมูก Open / Semi-open",en:"Open / Semi-open Rhinoplasty",
+ what:"เปิดแผลเล็กที่ columella (แกนกลางรูจมูก) เพื่อเห็นโครงสร้างชัด แก้โครงสร้างได้มากขึ้น ทั้งสัน ปลาย และกระดูกอ่อน semi-open เปิดจำกัดกว่า open",
+ who:"เคสแก้จมูก ปลายจมูกต้องตกแต่งมาก จมูกเบี้ยว โครงสร้างซับซ้อน",
+ kw:["แก้จมูก","จมูกทะลุ","จมูกเบี้ยว","ปลายจมูกใหญ่","open rhinoplasty"],
+ ans:"เคสแก้จมูกต้องดูโครงสร้างเดิมก่อนค่ะ/ครับ แนะนำนำประวัติการผ่าตัดเดิมมาตอน consult แพทย์จะเลือกเทคนิคที่เหมาะที่สุด",
+ spec:{anes:"ยาสลบ/sedation*",or:"2-3 ชม.*",stay:"ไม่นอน-1 คืน*",rec:"บวมหลัก 2-3 สัปดาห์*"},
+ faq:[["เคยทำมาแล้วแก้ได้ไหม","ได้ แต่เป็นเคสซับซ้อน แพทย์ต้องประเมินโครงสร้างและเนื้อเยื่อที่เหลือ ควรเว้นระยะจากการผ่าตัดเดิมตามแพทย์แนะนำ*"],["แผลตรง columella เห็นไหม","เป็นแผลเล็กใต้จมูก มองตรงๆ ไม่เห็น จางลงตามเวลา"],["ต้องถอดของเดิมก่อนไหม","บางเคสถอด+แก้ในครั้งเดียว บางเคสต้องพักเนื้อเยื่อก่อน แพทย์ตัดสินใจหลังตรวจ"]],
+ red:["ปลายจมูกซีด/คล้ำ = ด่วนมาก","เลือดออกไม่หยุด","ไข้ ปวดมากขึ้น"],
+ rel:"Closed rhinoplasty · Rib rhinoplasty",
+ note:"เคสแก้จมูก = ซับซ้อน ห้ามประเมินราคา/เทคนิคทางโทรศัพท์ ชวนมา consult พร้อมประวัติเดิม"},
+{g:"Face",ab:"RR",th:"เสริมจมูกกระดูกอ่อนซี่โครง",en:"Rib Rhinoplasty",
+ what:"ใช้กระดูกอ่อนซี่โครงของตัวเองมาแกะสลักสร้างโครงจมูก แข็งแรง ไม่มีปัญหาสิ่งแปลกปลอม สำหรับเคสซับซ้อนหรือมีปัญหากับซิลิโคน",
+ who:"จมูกสั้นมาก ผิวบาง เคยติดเชื้อ/ซิลิโคนทะลุ แพ้ซิลิโคน เคสแก้หลายครั้ง",
+ kw:["จมูกซี่โครง","rib","จมูกติดเชื้อ","ซิลิโคนทะลุ","แพ้ซิลิโคน"],
+ ans:"ใช้เนื้อเยื่อของตัวเอง เหมาะกับเคสที่มีปัญหากับซิลิโคนหรือต้องการโครงแข็งแรงค่ะ/ครับ เป็นการผ่าตัดใหญ่ขึ้น นอน รพ. [x คืน]",
+ spec:{anes:"ยาสลบ",or:"3-4 ชม.+*",stay:"[x คืน]*",rec:"2-3 สัปดาห์*"},
+ faq:[["แผลที่ซี่โครงใหญ่ไหม","แผลเล็กราว 2-3 ซม. ใต้ราวนม* ซ่อนในแนวเสื้อชั้นในได้ แพทย์อธิบายละเอียดตอน consult"],["เจ็บซี่โครงนานไหม","ระบมบริเวณซี่โครงช่วงแรก มียาและทีมดูแล อาการดีขึ้นเป็นลำดับ*"],["จมูกงอไหม","กระดูกอ่อนมีโอกาส warp ได้เล็กน้อย แพทย์มีเทคนิคเตรียมกราฟต์เพื่อลดความเสี่ยง (ให้แพทย์อธิบาย)"],["ราคาสูงกว่าแบบอื่นไหม","สูงกว่า เพราะซับซ้อนและใช้เวลาผ่าตัดมากกว่า [ช่วงราคายืนยัน pricing]"]],
+ red:["เจ็บหน้าอกมาก หายใจลำบาก = ด่วนมาก","ไข้ แผลแดงร้อน","ปลายจมูกซีด/คล้ำ"],
+ rel:"Open rhinoplasty · แก้จมูกเคสซับซ้อน",
+ note:"เคสกลุ่มนี้มักเจ็บมาเยอะ (เคยมีปัญหา) ใช้โทนเห็นใจ ไม่ตำหนิที่เดิม แล้วชูจุดแข็งเรื่องรับเคสแก้"},
+{g:"Face",ab:"LS",th:"ศัลยกรรมริมฝีปาก",en:"Lip Surgery",
+ what:"ปรับรูปริมฝีปาก เช่น ทำปากบาง ปากกระจับ แก้ปากหนา ปรับมุมปาก ใช้ยาชาเฉพาะที่ จบใน 1 วัน",
+ who:"ปากหนา อยากได้ทรงกระจับ ปากบน-ล่างไม่สมดุล ยิ้มแล้วเหงือกเยอะ [ถ้ามีบริการ gummy smile ระบุ]",
+ kw:["ปากกระจับ","ตัดปาก","ปากบาง","ปากหนา","ทำปาก"],
+ ans:"เป็นหัตถการเล็ก ใช้ยาชา ทำเสร็จกลับบ้านได้เลยค่ะ/ครับ แพทย์จะออกแบบทรงให้เข้ากับใบหน้าตอน consult",
+ spec:{anes:"ยาชาเฉพาะที่",or:"~1 ชม.*",stay:"ไม่ต้องนอน รพ.",rec:"บวม 3-7 วัน*"},
+ faq:[["บวมกี่วัน","บวมมากสุด 2-3 วันแรก แล้วยุบเป็นลำดับ ทรงชัดราว 2-4 สัปดาห์*"],["กินข้าวยังไง","ช่วงแรกทานอาหารอ่อน เลี่ยงร้อนจัด/เผ็ดจัด ดูแลความสะอาดช่องปากตามคำแนะนำ"],["รอยแผลเห็นไหม","แผลอยู่แนวขอบปาก/ในปาก จางลงตามเวลา"]],
+ red:["บวมมากขึ้นผิดปกติ เลือดซึมไม่หยุด","ไข้ ปวดมากขึ้น"],
+ rel:"Fat grafting ริมฝีปาก [ถ้ามีบริการ ระบุ]",
+ note:""},
+{g:"Breast",ab:"BA",th:"เสริมหน้าอก",en:"Breast Augmentation",
+ what:"เสริมหน้าอกด้วยซิลิโคนเกรดพรีเมียม เลือกแนวแผลได้ (ใต้ราวนม/รักแร้) ตำแหน่งใต้กล้ามเนื้อ/เหนือกล้ามเนื้อ/dual plane ตามสรีระ ผ่าตัดในโรงพยาบาลโดยศัลยแพทย์ตกแต่ง + วิสัญญีแพทย์",
+ who:"เพิ่มขนาด/ปรับทรง หน้าอกไม่เท่ากัน รวมถึงเคสแก้ (แคปซูลหดรัด ซิลิโคนรั่ว ทรงผิด)",
+ kw:["เสริมนม","ทำนม","ซิลิโคน","กี่ cc","แก้นม","เสริมหน้าอก"],
+ ans:"ที่นี่ผ่าตัดในโรงพยาบาล มีวิสัญญีแพทย์ดูแลตลอดค่ะ/ครับ ใช้ซิลิโคนพรีเมียม [Motiva/Mentor ยืนยัน stock] ขนาดและตำแหน่งแพทย์วัดสัดส่วนให้ตอน consult",
+ spec:{anes:"ยาสลบ",or:"1.5-2.5 ชม.*",stay:"1 คืน*",rec:"งานเบา ~1 สัปดาห์*"},
+ faq:[["กี่ cc ดี","ขึ้นกับสัดส่วน ความกว้างอก ผิวหนังเดิม และ lifestyle แพทย์วัดตัวจริง + ลองตัวอย่างแล้วแนะนำ"],["เปลี่ยนซิลิโคนทุกกี่ปี","[คำตอบมาตรฐานทีมแพทย์ + นโยบาย warranty แบรนด์] โดยทั่วไปไม่ต้องเปลี่ยนตามเวลาแบบอัตโนมัติ แต่ควรตรวจติดตามสม่ำเสมอ"],["ให้นมบุตรได้ไหม","ส่วนใหญ่ให้นมได้เพราะซิลิโคนอยู่คนละชั้นกับต่อมน้ำนม [ยืนยันคำตอบมาตรฐานกับทีมแพทย์]"],["ตรวจแมมโมแกรมได้ไหม","ได้ โดยแจ้งเจ้าหน้าที่ว่ามีซิลิโคน จะใช้เทคนิคถ่ายเฉพาะ [ยืนยันกับทีมแพทย์]"],["ยกของ/ออกกำลังกายเมื่อไหร่","งดยกหนักและออกกำลังช่วงบน ตามระยะที่แพทย์กำหนด*"]],
+ red:["บวมตึงข้างเดียวโตขึ้นเร็ว = ด่วน (เลือดคั่ง)","ไข้ แผลแดงร้อน มีหนอง","เจ็บหน้าอกมาก หายใจลำบาก = ด่วนมาก"],
+ rel:"เสริมผ่านกล้องทางรักแร้ · ยกกระชับ · ลดหัวนม",
+ note:"อย่าคุยรายละเอียด cc ทางโทรศัพท์ เน้นความปลอดภัยระดับโรงพยาบาล ชวนมาวัดตัวจริง"},
+{g:"Breast",ab:"EB",th:"เสริมหน้าอกผ่านกล้องทางรักแร้",en:"Endoscopic Breast Augmentation",
+ what:"เทคนิคเฉพาะของศูนย์ ใช้กล้อง endoscope ช่วยเลาะโพรงผ่านแผลที่รักแร้ เห็นชั้นเนื้อเยื่อจริงระหว่างเลาะ แม่นยำ เลือดออกน้อยกว่าแบบ blind และไม่มีแผลบนเต้านม",
+ who:"ไม่อยากมีแผลบนเต้านม กังวลเรื่องรอยแผล อยากได้ความแม่นยำของการวางโพรง",
+ kw:["เสริมนมรักแร้","ผ่านกล้อง","ไม่อยากมีแผลที่นม","endoscopic"],
+ ans:"ของเราเสริมทางรักแร้แบบใช้กล้องค่ะ/ครับ แพทย์มองเห็นชัดระหว่างเลาะโพรง แม่นยำและบอบช้ำน้อยกว่า และไม่มีแผลบนเต้านมเลย",
+ spec:{anes:"ยาสลบ",or:"2-3 ชม.*",stay:"1 คืน*",rec:"งานเบา ~1 สัปดาห์*"},
+ faq:[["ต่างจากเสริมรักแร้ทั่วไปยังไง","แบบทั่วไปเลาะแบบไม่เห็นภาพ (blind) ของเราใช้กล้องมองเห็นจริง เลือดออกน้อยกว่า ตำแหน่งโพรงแม่นกว่า เป็นเทคนิคที่แพทย์ฝึกจากเกาหลีใต้"],["แผลรักแร้เห็นไหม","ซ่อนในรอยพับรักแร้ จางลงตามเวลา ช่วงแรกงดโกน/แว็กซ์ตามคำแนะนำ"],["ทุกคนทำวิธีนี้ได้ไหม","ส่วนใหญ่ได้ แต่บางเคส (เช่น เคสแก้บางแบบ) อาจเหมาะกับแนวแผลอื่น แพทย์ประเมิน"]],
+ red:["เหมือน Breast Augmentation ทุกข้อ"],
+ rel:"เสริมหน้าอกมาตรฐาน · ยกกระชับ",
+ note:"Signature ของศูนย์ ควรพูดถึงทุกครั้งที่ลูกค้าถามเรื่องเสริมหน้าอก โดยเฉพาะเมื่อกังวลเรื่องแผล"},
+{g:"Breast",ab:"MP",th:"ยกกระชับเต้านม",en:"Mastopexy",
+ what:"ผ่าตัดยกเต้านมที่หย่อนคล้อยให้กลับตำแหน่ง จัดทรงใหม่ ย้ายตำแหน่งหัวนมให้เหมาะสม แนวแผลมีหลายแบบตามระดับความหย่อน (รอบปานนม/แนวดิ่ง/ตัว T)",
+ who:"เต้านมหย่อนคล้อยหลังให้นมบุตร/ลดน้ำหนัก หัวนมชี้ลง ผิวหนังเต้านมยืด",
+ kw:["นมหย่อน","นมคล้อย","ยกกระชับนม","หลังให้นมลูก","mastopexy"],
+ ans:"ถ้าเต้านมหย่อน การเสริมอย่างเดียวอาจไม่พอค่ะ/ครับ ต้องยกกระชับร่วมด้วย บางรายทำพร้อมกันได้ แพทย์ประเมินระดับความหย่อนตอน consult",
+ spec:{anes:"ยาสลบ",or:"2-4 ชม.*",stay:"1 คืน*",rec:"งานเบา 1-2 สัปดาห์*"},
+ faq:[["เสริมด้วยยกด้วยพร้อมกันได้ไหม","ได้ในบางราย ขึ้นกับระดับความหย่อนและปริมาณเนื้อเดิม บางเคสแพทย์แนะนำแยกสองครั้งเพื่อความปลอดภัยของเนื้อเยื่อ"],["แผลเยอะไหม","ขึ้นกับระดับความหย่อน แผลรอบปานนมน้อยสุด แบบตัว T มากสุด แพทย์เลือกให้น้อยที่สุดที่ได้ทรงที่ดี"],["ให้นมลูกในอนาคตได้ไหม","หลายรายยังให้ได้ ขึ้นกับเทคนิค [ยืนยันคำตอบมาตรฐานกับทีมแพทย์]"]],
+ red:["หัวนม/ผิวเต้านมซีดคล้ำ = ด่วนมาก","ไข้ แผลแดงร้อน","บวมตึงข้างเดียวโตเร็ว"],
+ rel:"เสริมหน้าอก · ลดหัวนม",
+ note:""},
+{g:"Breast",ab:"NR",th:"ลดขนาดหัวนม/ปานนม",en:"Nipple / Areola Reduction",
+ what:"หัตถการเล็กใช้ยาชา ปรับขนาดหัวนมที่ใหญ่/ยาว หรือลดความกว้างปานนม ให้ได้สัดส่วน จบเร็ว กลับบ้านได้เลย",
+ who:"หัวนมใหญ่/ยาว (มักหลังให้นมบุตร) ปานนมกว้าง ทำเดี่ยวหรือร่วมกับเสริม/ยกกระชับได้ในครั้งเดียว",
+ kw:["หัวนมใหญ่","ลดหัวนม","ปานนมกว้าง","หัวนมยาว"],
+ ans:"เป็นหัตถการเล็ก ใช้ยาชา ทำเสร็จกลับบ้านได้เลยค่ะ/ครับ ทำพร้อมหัตถการเต้านมอื่นในครั้งเดียวก็ได้",
+ spec:{anes:"ยาชาเฉพาะที่",or:"~1 ชม.*",stay:"ไม่ต้องนอน รพ.",rec:"กิจวัตรปกติได้เร็ว*"},
+ faq:[["ความรู้สึกหัวนมเปลี่ยนไหม","อาจชาชั่วคราวช่วงแรก ส่วนใหญ่กลับมาใกล้เคียงเดิม [ยืนยันคำตอบมาตรฐานกับทีมแพทย์]"],["ให้นมลูกได้ไหม","ขึ้นกับเทคนิคที่ใช้ ถ้าวางแผนมีบุตรให้แจ้งแพทย์ตอน consult"]],
+ red:["หัวนมซีด/คล้ำ","แผลแดงร้อน มีหนอง"],
+ rel:"เสริมหน้าอก · ยกกระชับ",
+ note:"ลูกค้ามักอาย ให้ตอบโทนปกติ เป็นมืออาชีพ ไม่ทำให้รู้สึกแปลก"},
+{g:"Body",ab:"AB",th:"ผ่าตัดตกแต่งหน้าท้อง",en:"Abdominoplasty / Panniculectomy",
+ what:"ตัดหนังหน้าท้องส่วนเกิน + เย็บซ่อมกล้ามเนื้อหน้าท้องที่แยกจากการตั้งครรภ์ (diastasis recti) ย้ายตำแหน่งสะดือให้สวยงาม panniculectomy คือตัดเฉพาะหนังที่ห้อยในเคสหลังลดน้ำหนักมาก ไม่ใช่วิธีลดความอ้วน",
+ who:"หนังท้องย้วยหลังคลอด/หลังลดน้ำหนักมาก กล้ามเนื้อหน้าท้องแยก ท้องแตกลายช่วงล่าง หนังห้อยจนเสียดสี/อับชื้น",
+ kw:["หนังท้องย้วย","ตัดหนังหน้าท้อง","ท้องแตกลาย","ท้องย้วยหลังคลอด","tummy tuck"],
+ ans:"เหมาะกับคนที่มีหนังส่วนเกินค่ะ/ครับ เพราะตัดหนังและเย็บซ่อมกล้ามเนื้อ เป็นผ่าตัดใหญ่ นอน รพ. [x คืน] แพทย์ประเมินหน้าท้องตอน consult",
+ spec:{anes:"ยาสลบ",or:"2-4 ชม.*",stay:"[2-3 คืน]*",rec:"งานเบา 2-4 สัปดาห์*"},
+ faq:[["ลดน้ำหนักได้ไหม","ไม่ใช่การลดน้ำหนัก น้ำหนักควรนิ่งใกล้เป้าหมายก่อนผ่า ผลจะดีและอยู่นานกว่า"],["แผลยาวไหม","แนวบิกินี่จากสะโพกถึงสะโพก* ซ่อนใต้ขอบกางเกงชั้นในได้ จางลงตามเวลา"],["ท้องแตกลายหายไหม","ลายที่อยู่ต่ำกว่าสะดือส่วนใหญ่ถูกตัดออกไปด้วย ส่วนที่เหลืออาจจางลง (อย่าการันตีหายหมด)"],["มีลูกอีกได้ไหม","ได้ แต่ควรทำหลังวางแผนมีบุตรครบ ไม่งั้นหน้าท้องอาจยืดอีก แพทย์จะแนะนำ timing"],["ใส่ชุดกระชับนานไหม","ตามระยะที่แพทย์กำหนด [x สัปดาห์]*"]],
+ red:["ปวดน่อง ขาบวมข้างเดียว หายใจลำบาก = ด่วนมาก (สัญญาณลิ่มเลือด)","ไข้ แผลแดงร้อน มีหนองหรือน้ำเหลืองมาก","แผลแยก"],
+ rel:"VASER liposuction (มักทำร่วมกัน) · ยกกระชับเต้านม (mommy makeover)",
+ note:"มีภาพ before/after 2 เคส · จุดสับสนอันดับ 1 คือสับสนกับดูดไขมัน ดู decision cue ที่การ์ด VASER"},
+{g:"Body",ab:"VL",th:"ดูดไขมัน VASER",en:"VASER Liposuction",
+ what:"ดูดไขมันเฉพาะจุดด้วยคลื่นเสียงความถี่สูง (ultrasound-assisted) สลายไขมันก่อนดูด บอบช้ำน้อยกว่าแบบดั้งเดิม เก็บไขมันไปเติมส่วนอื่นได้ (fat grafting)",
+ who:"น้ำหนักใกล้เกณฑ์แต่มีไขมันสะสมเฉพาะจุด: หน้าท้อง เอว ต้นแขน ต้นขา เหนียง แผ่นหลัง ไม่ใช่วิธีลดความอ้วน",
+ kw:["ดูดไขมัน","ลดพุง","VASER","เอาไขมันออก","ดูดเหนียง","ดูดแขน"],
+ ans:"ดูดไขมันคือการจัดรูปร่างเฉพาะจุด ไม่ใช่การลดน้ำหนักค่ะ/ครับ ของเราใช้ VASER ช่วยให้บอบช้ำน้อยลง แพทย์ประเมินจุดที่ต้องการตอน consult",
+ spec:{anes:"ยาสลบ/ยาชาตามขอบเขต*",or:"1-3 ชม.*",stay:"ไม่นอน-1 คืน*",rec:"ใส่ชุดกระชับ [x สัปดาห์]*"},
+ faq:[["ลดได้กี่กิโล","ไม่ใช่การลดน้ำหนัก ตัวเลขบนตาชั่งเปลี่ยนไม่มาก แต่สัดส่วน/ทรงเปลี่ยน คนที่เหมาะคือน้ำหนักใกล้เกณฑ์แต่มีไขมันเฉพาะจุด"],["ไขมันกลับมาไหม","เซลล์ที่ดูดออกไม่งอกใหม่ แต่ถ้าน้ำหนักขึ้น เซลล์ที่เหลือขยายได้ ต้องคุมน้ำหนักต่อ"],["ดูดกี่จุดต่อครั้ง","มีปริมาณปลอดภัยต่อครั้งที่แพทย์ควบคุม จุดเยอะอาจแบ่งรอบ แพทย์วางแผนตอน consult"],["ผิวจะเหี่ยวไหม","VASER ช่วยกระชับผิวได้ระดับหนึ่ง แต่ถ้าหนังหย่อนมากอาจต้องผ่าตัดตัดหนังร่วม แพทย์ประเมิน"],["เอาไขมันไปเติมหน้าได้ไหม","ได้ เรียก fat grafting วางแผนพร้อมกันได้ในครั้งเดียว"]],
+ red:["ปวดน่อง ขาบวม หายใจลำบาก = ด่วนมาก","ไข้ ผิวบริเวณดูดแดงร้อนผิดปกติ","ชา/ปวดมากขึ้นเรื่อยๆ"],
+ rel:"Abdominoplasty · Fat grafting ใบหน้า",
+ note:"Decision cue: คลอดบุตร/ลดน้ำหนักมาก + หนังย้วย = สัญญาณผ่าตัดหน้าท้อง | ไขมันเกินหนังตึง = ดูดไขมัน | ก้ำกึ่ง = แพทย์ประเมิน"}
+];
+
+const HOTKW=["คิ้วตก","ทำตาสองชั้น","ถุงใต้ตา","เสริมจมูก","แก้จมูก","เสริมนม","นมหย่อน","ดูดไขมัน","หนังท้องย้วย","ดึงหน้า","ปากกระจับ","หัวนมใหญ่"];
+
+/* ================= ROLE PLAYS ================= */
+const ROLEPLAYS=[
+{f:"Face",t:"Role Play 1 · สายทำตาสองชั้น (ถามราคา)",s:"ลูกค้าหญิง ~35 ปี โทรมาถามราคาทำตาสองชั้นเป็นคำถามแรก",
+ d:[["cc","สวัสดีค่ะ โรงพยาบาลพญาไทศรีราชา [ชื่อ] ยินดีให้บริการค่ะ"],
+    ["cust","อยากถามราคาทำตาสองชั้นค่ะ เท่าไหร่คะ"],
+    ["cc","ยินดีให้ข้อมูลค่ะ ขออนุญาตสอบถามเพิ่มนิดนึงนะคะ เพื่อให้ข้อมูลได้ตรงที่สุด ตอนนี้กังวลเรื่องหนังตาแบบไหนคะ เช่น ชั้นตาไม่ชัด หนังตาเยอะ หรือตาดูง่วงคะ"],
+    ["cust","หนังตาเริ่มตกค่ะ ถ่ายรูปแล้วตาดูง่วงตลอด"],
+    ["cc","เข้าใจเลยค่ะ อาการแบบนี้มีทางเลือกมากกว่า 1 แบบ ทั้งแผลเล็กและแผลยาว และบางท่านปัญหาจริงอยู่ที่คิ้วตก ซึ่งคุณหมอต้องเป็นผู้ประเมินค่ะ ราคาเริ่มต้นกลุ่มศัลยกรรมตาอยู่ที่ [ช่วงราคา] ราคาจริงขึ้นกับเทคนิคที่เหมาะกับเราค่ะ"],
+    ["cust","แล้วหมอที่ทำคือใครคะ"],
+    ["cc","คุณหมอดุลยณัฐ อรัณยะปาล ศัลยแพทย์ตกแต่งเฉพาะทางค่ะ ประสบการณ์กว่า 20 ปี ผ่านการฝึกอบรมเทคนิคจากเกาหลีใต้โดยตรง และผ่าตัดในโรงพยาบาล มีมาตรฐานความปลอดภัยเต็มรูปแบบค่ะ"],
+    ["cc","เดี๋ยวขออนุญาตนัดคิวปรึกษาคุณหมอนะคะ คุณหมอออกตรวจ [วัน-เวลา] สะดวกช่วงไหนคะ"],
+    ["cust","เสาร์ได้ค่ะ"],
+    ["cc","รับทราบค่ะ ขอชื่อ-เบอร์ติดต่อกลับ และทราบข่าวเราจากช่องทางไหนคะ จะได้ส่งรายละเอียดการเตรียมตัวให้ค่ะ"]],
+ l:["อย่าตอบราคาทันทีเป็นตัวเลขเดียว ถามอาการก่อน แล้วตอบเป็นช่วงราคาเริ่มต้น","ปักหมุดจุดขาย: หมอเฉพาะทาง + โรงพยาบาล + training เกาหลี ใน 1 ประโยค","ปิดที่การนัด consult พร้อมเก็บ lead ครบ"]},
+{f:"Breast",t:"Role Play 2 · สายเสริมหน้าอก (กังวลความปลอดภัย)",s:"ลูกค้าหญิง ~28 ปี หาข้อมูลจากคลินิกมาแล้ว กังวลความปลอดภัยและแผลเป็น",
+ d:[["cust","สนใจเสริมหน้าอกค่ะ แต่กลัว เห็นข่าวคลินิกแล้วไม่กล้าทำ"],
+    ["cc","ขอบคุณที่โทรมาปรึกษานะคะ ความกังวลเรื่องความปลอดภัยเป็นเรื่องที่ถูกต้องแล้วค่ะ ที่พญาไทศรีราชา การเสริมหน้าอกทุกเคสผ่าตัดในห้องผ่าตัดโรงพยาบาล มีวิสัญญีแพทย์ดูแลการดมยาตลอด และมีระบบดูแลหลังผ่าตัดค่ะ"],
+    ["cust","แล้วแผลเป็นล่ะคะ กลัวมีรอยที่นม"],
+    ["cc","ที่นี่มีเทคนิคเฉพาะคือเสริมผ่านกล้องทางรักแร้ค่ะ แผลอยู่ที่รักแร้ ไม่มีแผลบนเต้านมเลย และการใช้กล้องช่วยให้คุณหมอมองเห็นชัดระหว่างผ่าตัด บอบช้ำน้อยกว่าแบบไม่ใช้กล้องค่ะ"],
+    ["cust","ซิลิโคนใช้ยี่ห้ออะไรคะ"],
+    ["cc","มีซิลิโคนเกรดพรีเมียมหลายรุ่นค่ะ [Motiva/Mentor ตาม stock จริง] คุณหมอจะแนะนำรุ่นและขนาดที่เหมาะกับสัดส่วนตอนวัดตัวจริงค่ะ ผลลัพธ์แต่ละท่านไม่เหมือนกันนะคะ ขึ้นกับสรีระเดิมด้วย"],
+    ["cc","แนะนำเข้ามาปรึกษาคุณหมอก่อนค่ะ ได้วัดสัดส่วนจริง ดูตัวอย่างซิลิโคน และถามทุกข้อสงสัยกับคุณหมอโดยตรง สะดวกวันไหนคะ"]],
+ l:["รับ concern ก่อน อย่าข้ามไปขาย","ใช้ endoscopic technique เป็นคำตอบของ concern เรื่องแผล","ห้ามพูด 'ปลอดภัย 100%' ใช้ข้อเท็จจริงแทน","ย้ำเสมอว่าผลลัพธ์ขึ้นกับแต่ละบุคคล"]},
+{f:"Body",t:"Role Play 3 · สายคุณแม่หลังคลอด (ดูดไขมัน vs ตัดหนังหน้าท้อง)",s:"ลูกค้าหญิง ~40 ปี หลังคลอดลูกคนที่ 2 อยากดูดไขมันหน้าท้อง",
+ d:[["cust","อยากดูดไขมันหน้าท้องค่ะ พุงไม่ยุบเลยหลังคลอด"],
+    ["cc","ขอบคุณที่โทรมานะคะ ขอถามเพิ่มนิดนึงค่ะ หลังคลอดหนังหน้าท้องเราเป็นแบบไหนคะ ถ้าก้มตัวแล้วหนังย้วยจับได้เป็นชั้น หรือมีท้องแตกลายเยอะไหมคะ"],
+    ["cust","ย้วยค่ะ จับได้เลย แตกลายด้วย"],
+    ["cc","ข้อมูลนี้สำคัญมากค่ะ เพราะถ้าปัญหาหลักคือหนังส่วนเกิน การดูดไขมันอย่างเดียวอาจไม่ตอบโจทย์ อาจต้องเป็นการผ่าตัดตกแต่งหน้าท้อง ซึ่งตัดหนังส่วนเกินและเย็บซ่อมกล้ามเนื้อที่แยกจากการตั้งครรภ์ด้วยค่ะ ทั้งหมดนี้คุณหมอต้องตรวจหน้าท้องจริงก่อนถึงบอกได้ค่ะ"],
+    ["cust","อ๋อ ไม่เคยรู้เลยค่ะ แล้วพักฟื้นนานไหมคะ"],
+    ["cc","ถ้าเป็นผ่าตัดหน้าท้องจะเป็นผ่าตัดใหญ่ นอนโรงพยาบาล [x คืน] พักฟื้นประมาณ [x สัปดาห์] ค่ะ ส่วนดูดไขมันจะเบากว่า คุณหมอจะแนะนำแผนที่เหมาะหลังตรวจค่ะ เข้ามาปรึกษาก่อนไหมคะ คุณหมอออกตรวจ [วัน-เวลา]"]],
+ l:["จุดสับสนอันดับ 1 ของกลุ่ม Body: ใช้ decision cue หนังย้วย = สัญญาณ abdominoplasty","Call center ไม่ฟันธง แต่เปิดทางเลือกแล้วส่งให้แพทย์ตัดสิน","การถามคำถามที่ถูกต้องทำให้ลูกค้ารู้สึกว่าเราเป็นมืออาชีพ"]},
+{f:"Face",t:"Role Play 4 · ลูกค้าผู้ชาย (กลัวไม่เป็นธรรมชาติ)",s:"ลูกค้าชาย ~45 ปี ผู้บริหาร ตาเริ่มปรือ อยากดูสดชื่นขึ้นแต่กลัวคนรู้ว่าทำ",
+ d:[["cust","ผมอยากปรึกษาเรื่องตาครับ ตามันดูง่วงๆ แต่ไม่อยากให้ดูเหมือนไปทำมานะ กลัวออกมาตาโตเป็นผู้หญิง"],
+    ["cc","เข้าใจเลยครับ ลูกค้าผู้ชายของศูนย์เราส่วนใหญ่ต้องการแบบเดียวกันคือดูสดชื่นขึ้นแต่เป็นธรรมชาติ ไม่เปลี่ยนคาแรกเตอร์ครับ ซึ่งคุณหมอจะออกแบบชั้นตาสำหรับผู้ชายโดยเฉพาะ ชั้นไม่สูง ดูเป็นธรรมชาติครับ"],
+    ["cust","แล้วมันต้องหยุดงานนานไหมครับ ผมประชุมเยอะ"],
+    ["cc","หัตถการกลุ่มตาส่วนใหญ่ใช้ยาชา ไม่ต้องนอนโรงพยาบาลครับ ช่วงบวมหลักอยู่ราว 1-2 สัปดาห์แรก* หลายท่านวางแผนช่วง WFH หรือลางานสั้นๆ ครับ ทั้งนี้คุณหมอจะประเมินก่อนว่าที่ตาดูง่วง ปัญหาอยู่ที่หนังตาหรือคิ้วตก เพราะวิธีแก้ต่างกันครับ"],
+    ["cust","อ้าว ต่างกันยังไงครับ"],
+    ["cc","ถ้าคิ้วตก คุณหมอมีเทคนิคดึงหน้าผากผ่านกล้อง แผลเล็กซ่อนในผม ซึ่งเหมาะกับผู้ชายมากเพราะดูเป็นธรรมชาติครับ แนะนำเข้ามาให้คุณหมอประเมินก่อนครับ ใช้เวลาไม่นาน สะดวกช่วงไหนครับ"]],
+ l:["ลูกค้าชายต้องการ 'ธรรมชาติ ไม่มีใครรู้' ตอบ concern นี้ก่อนเรื่องอื่น","อย่าใช้ภาษาการตลาดผู้หญิง (สวย หวาน ตาโต) ใช้คำว่า สดชื่น ดูไม่โทรม เป็นธรรมชาติ","ใช้จังหวะแนะนำ forehead lift อย่างเป็นธรรมชาติเมื่อ relevant"]},
+{f:"Advanced",t:"Role Play 5 · เคสแก้จมูก (เจ็บมาจากที่อื่น)",s:"ลูกค้าหญิง ~30 ปี เสริมจมูกมาจากคลินิก ปลายบางใส กังวลทะลุ เสียความมั่นใจมาก",
+ d:[["cust","คือ...เราเสริมจมูกมา 2 ปีแล้วค่ะ ตอนนี้ปลายมันบางลง มองเห็นซิลิโคนเลย เครียดมาก ไม่รู้จะทำยังไง"],
+    ["cc","ขอบคุณที่โทรมาเล่าให้ฟังนะคะ อาการปลายจมูกบางลงแบบนี้ควรได้พบแพทย์เพื่อประเมินเร็วค่ะ เพื่อดูว่าเนื้อเยื่อเป็นอย่างไรและวางแผนแก้ไขที่เหมาะสม ที่ศูนย์เราคุณหมอรับดูแลเคสแก้โดยเฉพาะค่ะ มีทั้งเทคนิค open และการใช้กระดูกอ่อนของตัวเองสำหรับเคสที่ผิวบาง"],
+    ["cust","จะโดนดุไหมคะ ที่ไปทำคลินิกมา"],
+    ["cc","ไม่เลยค่ะ คุณหมอดูแลเคสแบบนี้เป็นประจำ หน้าที่ของทีมเราคือช่วยแก้ให้ดีที่สุด ไม่ใช่ตำหนิค่ะ สิ่งที่อยากรบกวนคือ ถ้ามีเอกสารหรือข้อมูลการผ่าตัดเดิม เช่น ทำเมื่อไหร่ ใช้วัสดุอะไร นำมาด้วยตอน consult จะช่วยคุณหมอวางแผนได้แม่นขึ้นค่ะ"],
+    ["cust","ถ้าปลายมันใกล้ทะลุ ต้องรีบไหมคะ"],
+    ["cc","กรณีผิวบางมากควรให้คุณหมอเห็นเร็วที่สุดค่ะ เดี๋ยว [ชื่อ] จัดคิวให้เร็วที่สุดที่มีนะคะ และถ้าระหว่างนี้มีอาการปวด แดง หรือมีแผล ให้รีบมาโรงพยาบาลทันทีเลยค่ะ ขอเบอร์ติดต่อกลับด้วยค่ะ"]],
+ l:["เคสแก้ = ลูกค้าบอบช้ำทางใจมาแล้ว ใช้โทนเห็นใจ ไม่ตำหนิที่เดิม ไม่ซ้ำเติม","ขอประวัติการผ่าตัดเดิมเสมอ นี่คือข้อมูลที่มีค่าที่สุดสำหรับแพทย์","ผิวบางใกล้ทะลุ = จัดคิวเร่ง และให้คำแนะนำ red flag ก่อนวางสาย"]},
+{f:"Advanced",t:"Role Play 6 · สายเทียบราคา (คลินิกถูกกว่าครึ่งหนึ่ง)",s:"ลูกค้าหญิง ~25 ปี ได้ราคาเสริมจมูกจากคลินิกมาแล้ว โทรมาต่อรอง",
+ d:[["cust","ถามตรงๆ นะคะ ทำไมของโรงพยาบาลแพงจัง คลินิกที่หนูถามมาถูกกว่าครึ่งนึงเลย"],
+    ["cc","เป็นคำถามที่ดีมากค่ะ และหนูมีสิทธิ์เปรียบเทียบเต็มที่เลยค่ะ ราคาของเราครอบคลุมสิ่งที่มองไม่เห็นในใบเสนอราคาค่ะ คือผ่าตัดในห้องผ่าตัดโรงพยาบาลจริง มีวิสัญญีแพทย์ประจำเคส ทีมพยาบาลหลังผ่าตัด และถ้ามีเหตุไม่คาดคิด เรามี ICU และทีมแพทย์พร้อมในตึกเดียวกันค่ะ"],
+    ["cust","แต่มันก็แพงอยู่ดีอะค่ะ"],
+    ["cc","เข้าใจค่ะ อยากให้มองเป็นการลงทุนกับความปลอดภัยบนใบหน้าเราเองค่ะ และที่สำคัญ ราคาที่แจ้งเป็นราคา [รวม/ไม่รวมอะไร ตามตารางจริง] ไม่มีบวกเพิ่มหน้างานค่ะ ตอนนี้มี [โปรโมชัน/แผนผ่อนชำระ ตามประกาศ] ด้วยค่ะ ลองเข้ามาปรึกษาคุณหมอก่อนได้นะคะ ยังไม่ต้องตัดสินใจวันนั้นค่ะ ได้ราคาที่ชัดเจนของเคสตัวเองไปเปรียบเทียบ"],
+    ["cust","งั้นขอคิดดูก่อนค่ะ"],
+    ["cc","ได้เลยค่ะ ขออนุญาตขอชื่อกับเบอร์ไว้นะคะ เผื่อมีโปรโมชันหรือคิวพิเศษจะแจ้งก่อนใครค่ะ และถ้ามีคำถามเพิ่มโทรมาได้ตลอดเลยนะคะ"]],
+ l:["ไม่โจมตีคลินิก ไม่ defensive เรื่องราคา อธิบาย 'สิ่งที่ราคารวมอยู่' ด้วยข้อเท็จจริง","เสนอ consult เป็นทางออกที่ไม่กดดัน (ยังไม่ต้องตัดสินใจ)","ลูกค้าที่ยังไม่ตัดสินใจ = lead ที่ต้อง follow up เก็บข้อมูลก่อนวางสายเสมอ"]},
+{f:"Advanced",t:"Role Play 7 · อยากทำหลายอย่างพร้อมกัน",s:"ลูกค้าหญิง ~38 ปี อยากทำตา จมูก และดูดไขมันเหนียงในครั้งเดียว มีเวลาลางานจำกัด",
+ d:[["cust","ถ้าอยากทำตา จมูก แล้วก็ดูดเหนียงพร้อมกันเลย ทำได้ไหมคะ ลางานได้ครั้งเดียว"],
+    ["cc","เข้าใจโจทย์เลยค่ะ การทำหลายหัตถการในครั้งเดียวทำได้ในหลายกรณีค่ะ ข้อดีคือพักฟื้นรอบเดียว แต่ขึ้นกับการประเมินของคุณหมอเรื่องระยะเวลาผ่าตัดรวมและความปลอดภัยค่ะ บางแผนอาจแนะนำแบ่งเป็น 2 ครั้งถ้าเวลาผ่าตัดรวมยาวเกินไป"],
+    ["cust","แล้วถ้าทำพร้อมกัน ราคาถูกลงไหมคะ"],
+    ["cc","มีแพ็กเกจสำหรับการทำร่วมในบางรายการค่ะ [ตามตารางที่การตลาดอนุมัติ] ตัวเลขชัดเจนคุณหมอจะสรุปหลังวางแผนว่าทำอะไรบ้างในรอบเดียวค่ะ"],
+    ["cc","แนะนำแบบนี้ค่ะ เข้ามา consult ครั้งเดียว คุณหมอจะประเมินทั้ง 3 จุดพร้อมกัน แล้วออกแบบแผนที่คุ้มเวลาลางานที่สุดให้ค่ะ สะดวกช่วงไหนคะ"]],
+ l:["Combined procedures เป็นโอกาส ARPU สูง แต่ห้ามรับปากว่าทำพร้อมกันได้ ให้แพทย์ตัดสินเรื่องความปลอดภัย","ขายจุดเด่นที่ตรงโจทย์ลูกค้า: ประหยัดเวลาลางาน consult ครั้งเดียวประเมินครบ","เรื่องแพ็กเกจราคา ตอบตามตารางอนุมัติเท่านั้น"]},
+{f:"Advanced",t:"Role Play 8 · สายหลังผ่าตัด มีอาการผิดปกติ (ห้ามพลาด)",s:"ผู้ป่วยเสริมหน้าอกไปเมื่อ 3 วันก่อน โทรมาด้วยน้ำเสียงกังวล เต้านมข้างซ้ายบวมกว่าอีกข้างและปวดมากขึ้น",
+ d:[["cust","คือหนูผ่าเสริมหน้าอกไปเมื่อ 3 วันก่อนค่ะ ตอนนี้ข้างซ้ายมันบวมกว่าอีกข้างเยอะเลย แล้วก็ปวดขึ้นเรื่อยๆ ค่ะ กินยาแล้วก็ไม่ดีขึ้น"],
+    ["cc","ขอบคุณที่รีบโทรมานะคะ อาการบวมข้างเดียวที่มากขึ้นและปวดมากขึ้นแบบนี้ ต้องให้ทีมแพทย์ดูโดยเร็วค่ะ ไม่ควรรอดูอาการเองนะคะ ขออนุญาตทราบชื่อและวันที่ผ่าตัดค่ะ"],
+    ["cust","[แจ้งชื่อ] ผ่าวันศุกร์ที่แล้วค่ะ กับคุณหมอดุลยณัฐ"],
+    ["cc","รับทราบค่ะ เดี๋ยว [ชื่อ] โอนสายตรงไปที่ [ward/ทีมพยาบาลศูนย์] ทันทีเลยนะคะ ระหว่างนี้ยังไม่ต้องนวดหรือประคบอะไรเองนะคะ ถ้าสายหลุดหรือมีอาการมากขึ้น เช่น หายใจไม่สะดวก ให้มาโรงพยาบาลทันทีหรือโทร [เบอร์ ER] ค่ะ อยู่ในสายนะคะ กำลังโอนค่ะ"]],
+ l:["นี่คือสายระดับ 3 (ด่วน): บวมข้างเดียว + ปวดมากขึ้นหลังผ่าตัด = ส่งต่อทันที ห้าม triage เอง ห้ามนัด callback","ให้คำแนะนำระหว่างรอ: อย่าจัดการเอง + บอกเงื่อนไขที่ต้องมา รพ. ทันที","เก็บข้อมูล: ชื่อ วันผ่าตัด หัตถการ แพทย์ แล้วโอนสายแบบ warm transfer (อยู่ในสายจนติด)"]}
+];
+
+/* ================= QUIZ ================= */
+const QUIZ=[
+{q:"ลูกค้าโทรมาบอกว่า 'หนังตาตก ตาดูง่วง' สิ่งที่ถูกต้องที่สุดคือ",
+ c:["แนะนำทำตาสองชั้นแผลยาวทันที เพราะแก้หนังตาตกได้","อธิบายว่ามีหลายทางเลือก และบางรายปัญหาอยู่ที่คิ้วตก ต้องให้แพทย์ประเมิน แล้วชวนนัด consult","บอกราคาแผลเล็กเพราะถูกกว่า ลูกค้าจะได้ตัดสินใจง่าย"],a:1,
+ e:"ลูกค้าที่บ่นหนังตาตกจำนวนหนึ่งจริงๆ ต้องแก้ที่คิ้ว (forehead lift) ห้ามฟันธงแทนแพทย์"},
+{q:"ลูกค้าถามว่า 'เสริมหน้าอกที่นี่ปลอดภัย 100% ไหม' ควรตอบว่า",
+ c:["ยืนยันค่ะ ปลอดภัย 100% เพราะทำในโรงพยาบาล","การผ่าตัดทุกอย่างมีความเสี่ยง แต่ที่นี่ผ่าตัดในห้องผ่าตัดโรงพยาบาล มีวิสัญญีแพทย์ดูแลตลอด และมีระบบติดตามหลังผ่าตัดค่ะ","ไม่ทราบค่ะ ต้องถามคุณหมอ"],a:1,
+ e:"ห้ามใช้คำว่าปลอดภัย 100% ให้ตอบด้วยข้อเท็จจริงเรื่องมาตรฐานความปลอดภัยแทน"},
+{q:"จุดขายของการเสริมหน้าอก 'ผ่านกล้อง' ทางรักแร้ของเราคือ",
+ c:["ราคาถูกกว่าแบบอื่น","แพทย์มองเห็นชัดระหว่างเลาะโพรง แม่นยำ บอบช้ำน้อยกว่า และไม่มีแผลบนเต้านม","ไม่ต้องดมยาสลบ"],a:1,
+ e:"Endoscopic คือ signature ของศูนย์ ต่างจากเสริมรักแร้แบบไม่ใช้กล้อง (blind dissection)"},
+{q:"ลูกค้าหลังคลอด หนังท้องย้วยจับได้เป็นชั้น อยากดูดไขมัน ควร",
+ c:["รับจองดูดไขมันตามที่ลูกค้าขอ","อธิบายว่าถ้าปัญหาหลักคือหนังส่วนเกิน อาจต้องเป็นผ่าตัดหน้าท้อง แล้วชวนมาให้แพทย์ตรวจประเมิน","แนะนำให้ไปลดน้ำหนักก่อนค่อยโทรมาใหม่"],a:1,
+ e:"หนังเกิน = abdominoplasty, ไขมันเกินหนังตึง = liposuction, ก้ำกึ่ง = แพทย์ประเมิน"},
+{q:"เรื่องราคา call center บอกลูกค้าได้แค่ไหน",
+ c:["บอกราคาสุทธิได้เลยจะได้ปิดการขาย","บอกช่วงราคาเริ่มต้นตามตารางที่อนุมัติ และแจ้งว่าราคาจริงยืนยันหลังแพทย์ประเมิน","ห้ามพูดเรื่องราคาโดยเด็ดขาด"],a:1,
+ e:"ช่วงราคาเริ่มต้นบอกได้ตามตารางที่การตลาดอนุมัติ ราคาสุดท้ายต้องรอแพทย์ประเมิน"},
+{q:"ลูกค้าถามว่า 'ที่นี่ดีกว่าโรงพยาบาล X ยังไง' ควรตอบว่า",
+ c:["ที่นั่นหมอไม่เก่งเท่าเรา","เล่าจุดแข็งของเราด้วยข้อเท็จจริง โดยไม่พาดพิงที่อื่น","แนะนำให้ลองไปที่นั่นก่อนแล้วค่อยเทียบ"],a:1,
+ e:"ห้ามเปรียบเทียบเชิงลบหรือพาดพิงสถานพยาบาลอื่น ผิดหลักการโฆษณาสถานพยาบาล"},
+{q:"ข้อมูลขั้นต่ำที่ต้องบันทึกทุก lead คือ",
+ c:["ชื่อ เบอร์โทร หัตถการที่สนใจ ช่องทางที่รู้จักเรา","ชื่อกับเบอร์ก็พอ","เลขบัตรประชาชนและที่อยู่"],a:0,
+ e:"4 อย่างนี้คือขั้นต่ำ เพื่อให้ทีม follow up ต่อได้และวัดผลช่องทางการตลาดได้"},
+{q:"ลูกค้าถามคำถามทางการแพทย์ที่เราตอบไม่ได้ ควร",
+ c:["เดาคำตอบจากประสบการณ์","แจ้งว่าขอส่งต่อให้ทีมแพทย์ตอบ แล้วประสานทีมศูนย์ตามช่องทางที่กำหนด","บอกให้ลูกค้าไปหาข้อมูลใน Google"],a:1,
+ e:"ห้ามเดาเด็ดขาด การส่งต่ออย่างมืออาชีพดีกว่าคำตอบผิด"},
+{q:"ผู้ป่วยเสริมหน้าอกเมื่อ 3 วันก่อน โทรมาบอกว่าข้างซ้ายบวมกว่าและปวดมากขึ้น ควร",
+ c:["ปลอบว่าบวมเป็นเรื่องปกติหลังผ่าตัด ให้ประคบเย็น","บันทึกไว้แล้วนัด callback พรุ่งนี้","โอนสายไปทีมพยาบาล/ward ทันที และแจ้งเงื่อนไขที่ต้องมา รพ. ทันที"],a:2,
+ e:"บวมข้างเดียว + ปวดมากขึ้น = สัญญาณอันตราย (เช่น เลือดคั่ง) เป็นสายระดับ 3 ห้ามให้รอ"},
+{q:"ความแตกต่างของยาชากับยาสลบที่ตอบลูกค้าได้คือ",
+ c:["เหมือนกัน แค่ชื่อต่างกัน","ยาชา = ชาเฉพาะจุด รู้สึกตัวตลอด กลับบ้านได้เลย / ยาสลบ = หลับตลอด มีวิสัญญีแพทย์ดูแล ใช้กับผ่าตัดใหญ่","ยาสลบอันตรายมาก ไม่ควรเลือก"],a:1,
+ e:"อธิบายความต่างได้ระดับนี้พอ ส่วนการเลือกใช้เป็นดุลยพินิจแพทย์ตามหัตถการและสุขภาพ"},
+{q:"ลูกค้าบอกกำลังตั้งครรภ์ 4 เดือน อยากเสริมจมูก ควรตอบว่า",
+ c:["ทำได้เลย ไม่เกี่ยวกัน","โดยทั่วไปแนะนำเลื่อนหัตถการเสริมความงามออกไปหลังคลอด/หยุดให้นมก่อน และให้แพทย์เป็นผู้ประเมิน แจ้งข้อมูลนี้ให้ทีมแพทย์ล่วงหน้า","ปฏิเสธทันทีว่าโรงพยาบาลไม่รับ"],a:1,
+ e:"อย่ารับปากและอย่าปฏิเสธเอง ตั้งครรภ์/ให้นมคือกลุ่มที่ต้องส่งข้อมูลให้แพทย์ประเมิน"},
+{q:"ลูกค้าถามว่า 'ดูดไขมันแล้วลดได้กี่กิโล' คำตอบที่ถูกคือ",
+ c:["ลดได้ 5-10 กิโลแน่นอน","ดูดไขมันเป็นการปรับรูปร่างเฉพาะจุด ไม่ใช่การลดน้ำหนัก ตัวเลขบนตาชั่งเปลี่ยนไม่มาก แต่สัดส่วนเปลี่ยน","ยิ่งดูดเยอะยิ่งผอมเร็ว"],a:1,
+ e:"ตั้ง expectation ให้ถูก: liposuction = contouring ไม่ใช่ weight loss"},
+{q:"ลูกค้าเคยเสริมจมูกจากที่อื่น ปลายบางใส โทรมาปรึกษา สิ่งที่ควรทำคือ",
+ c:["บอกว่าที่เดิมทำไม่ดี มาแก้กับเราดีกว่า","โทนเห็นใจ ไม่ตำหนิที่เดิม แนะนำพบแพทย์เร็ว ขอให้นำประวัติการผ่าตัดเดิมมาด้วย และแจ้ง red flag ที่ต้องรีบมา รพ.","บอกให้กลับไปที่เดิมเพราะเขาต้องรับผิดชอบ"],a:1,
+ e:"เคสแก้ = บอบช้ำทางใจมาแล้ว ห้ามซ้ำเติม ประวัติเดิมคือข้อมูลที่มีค่าที่สุดของแพทย์ และผิวบางใกล้ทะลุต้องได้คิวเร็ว"},
+{q:"ประกันสุขภาพเบิกค่าศัลยกรรมความงามได้ไหม",
+ c:["ได้ทุกกรณี ยื่นเบิกได้เลย","โดยทั่วไปศัลยกรรมเพื่อความงามเบิกไม่ได้ ส่วนการผ่าตัดเสริมสร้างบางกรณีอาจเบิกได้ แนะนำลูกค้าเช็คกรมธรรม์กับบริษัทประกัน","ไม่ได้เด็ดขาดทุกกรณี"],a:1,
+ e:"ตอบตามหลักการแล้วให้ลูกค้าเช็คกรมธรรม์ อย่ารับปากแทนบริษัทประกัน"},
+{q:"ลูกค้าลังเลไม่กล้าตัดสินใจ วิธีปิดสายที่ถูกต้องตามโทนแบรนด์คือ",
+ c:["กดดันว่าโปรจะหมดวันนี้ ให้โอนมัดจำเลย","เคารพการตัดสินใจ เสนอ consult แบบไม่ผูกมัด เก็บชื่อ-เบอร์ไว้ follow up และเปิดช่องให้โทรกลับมาถามได้","วางสายเพราะไม่ใช่ lead ที่จะปิดได้"],a:1,
+ e:"แบรนด์พญาไทไม่เร่งปิดการขาย ลูกค้าที่ลังเลคือ lead ที่ต้อง nurture ไม่ใช่กดดัน"}
+];
+
+/* ================= UI ================= */
+const $=s=>document.querySelector(s);
+const cardsEl=$("#cards");
+let curGroup="all",query="";
+
+const copyIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+const infoIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>';
+const alertIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>';
+const chevIcon='<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>';
+
+function render(){
+  cardsEl.innerHTML="";let n=0;
+  PRODUCTS.forEach((p,i)=>{
+    if(curGroup!=="all"&&p.g!==curGroup)return;
+    const hay=(p.th+" "+p.en+" "+p.kw.join(" ")+" "+p.what).toLowerCase();
+    if(query&&!hay.includes(query))return;
+    n++;
+    const card=document.createElement("div");
+    card.className="card g-"+p.g;
+    card.style.animationDelay=(Math.min(i,8)*40)+"ms";
+    card.innerHTML=`
+      <div class="card-head">
+        <div class="gdot">${p.ab}</div>
+        <div class="card-title"><div class="th">${p.th}</div><div class="en">${p.en} · ${p.g}</div></div>
+        ${chevIcon}
+      </div>
+      <div class="card-body"><div class="card-body-in">
+        <div class="field"><b>คืออะไร</b><span>${p.what}</span></div>
+        <div class="field"><b>เหมาะกับใคร</b><span>${p.who}</span></div>
+        <div class="field"><b>ข้อมูลหัตถการ (ค่าประมาณ)</b>
+          <div class="spec-grid">
+            <div class="spec"><div class="k">ระงับความรู้สึก</div><div class="v">${p.spec.anes}</div></div>
+            <div class="spec"><div class="k">เวลาผ่าตัด</div><div class="v">${p.spec.or}</div></div>
+            <div class="spec"><div class="k">นอน รพ.</div><div class="v">${p.spec.stay}</div></div>
+            <div class="spec"><div class="k">พักฟื้น</div><div class="v">${p.spec.rec}</div></div>
+          </div>
+          <div class="spec-note">* ค่าประมาณเพื่อสื่อสารเบื้องต้น ต้องยืนยันโดยทีมแพทย์ แผนจริงขึ้นกับการประเมินรายบุคคล</div>
+        </div>
+        <div class="field"><b>คำที่ลูกค้าใช้</b><div>${p.kw.map(k=>`<span class="kw">${k}</span>`).join("")}</div></div>
+        <div class="field"><b>คำตอบมาตรฐาน 1 ประโยค</b>
+          <div class="answer">${p.ans}<button class="copybtn" data-copy="${p.ans.replace(/"/g,"&quot;")}" title="คัดลอกคำตอบ">${copyIcon}</button></div>
+        </div>
+        <div class="field"><b>FAQ ที่ลูกค้าถามบ่อย</b>${p.faq.map(f=>`<div class="faq-item"><b>Q: ${f[0]}</b> — ${f[1]}</div>`).join("")}</div>
+        <div class="redflag"><b>${alertIcon} สัญญาณอันตรายหลังผ่าตัด = โอนสายทีมแพทย์ทันที</b><ul>${p.red.map(r=>`<li>${r}</li>`).join("")}</ul></div>
+        <div class="rel"><b>มักทำร่วมกับ:</b> ${p.rel}</div>
+        ${p.note?`<div class="note">${infoIcon}<span>${p.note}</span></div>`:""}
+        <div class="price">ราคาเริ่มต้น: [รอตาราง pricing ที่การตลาดอนุมัติ] &nbsp;·&nbsp; นัด consult: [ตาราง OPD]</div>
+      </div></div>`;
+    card.querySelector(".card-head").addEventListener("click",()=>card.classList.toggle("open"));
+    cardsEl.appendChild(card);
+  });
+  $("#noResult").style.display=n?"none":"block";
+}
+
+function setQuery(v,src){
+  query=v.trim().toLowerCase();
+  if(src!=="top")$("#qTop").value=v;
+  if(src!=="m")$("#qM").value=v;
+  render();
+}
+$("#qTop").addEventListener("input",e=>setQuery(e.target.value,"top"));
+$("#qM").addEventListener("input",e=>setQuery(e.target.value,"m"));
+document.addEventListener("keydown",e=>{
+  if(e.key==="/"&&document.activeElement.tagName!=="INPUT"){e.preventDefault();(innerWidth>=840?$("#qTop"):$("#qM")).focus();}
+});
+
+HOTKW.forEach(k=>{
+  const b=document.createElement("button");b.textContent=k;
+  b.addEventListener("click",()=>{switchTab("products");setQuery(k);});
+  $("#hotkw").appendChild(b);
+});
+
+document.querySelectorAll("#groupChips button").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll("#groupChips button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");curGroup=b.dataset.g;render();
+  });
+});
+
+document.addEventListener("click",e=>{
+  const btn=e.target.closest(".copybtn");if(!btn)return;
+  const txt=btn.dataset.copy;
+  const done=()=>toast("คัดลอกคำตอบแล้ว <b>พร้อมส่งให้ลูกค้า</b>");
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(()=>fallbackCopy(txt,done));}
+  else fallbackCopy(txt,done);
+});
+function fallbackCopy(t,cb){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");cb();}catch(e){}document.body.removeChild(ta);}
+let toastTimer;
+function toast(html){const t=$("#toast");t.innerHTML=html;t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2200);}
+
+/* role plays */
+let rpF="all";
+function renderRP(){
+  const el=$("#rpList");el.innerHTML="";
+  ROLEPLAYS.forEach(rp=>{
+    if(rpF!=="all"&&rp.f!==rpF)return;
+    const div=document.createElement("div");div.className="panel";
+    div.innerHTML=`<h2>${rp.t}<span class="rp-tag">${rp.f==="Advanced"?"สายยาก":rp.f}</span></h2><div class="rp-scene">สถานการณ์: ${rp.s}</div>`+
+      rp.d.map(([who,txt])=>`<div class="bubble-row ${who}"><div class="avatar">${who==="cc"?"CC":"คุณ"}</div><div class="bubble">${txt}</div></div>`).join("")+
+      `<div class="lessons"><b>จุดเรียนรู้</b><ul>${rp.l.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
+    el.appendChild(div);
+  });
+}
+document.querySelectorAll("#rpFilter button").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll("#rpFilter button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");rpF=b.dataset.f;renderRP();
+  });
+});
+renderRP();
+
+/* quiz */
+let answered=0,score=0;
+function buildQuiz(){
+  answered=0;score=0;$("#quizBar").style.width="0%";
+  $("#quizScore").style.display="none";
+  const el=$("#quizList");el.innerHTML="";
+  QUIZ.forEach((qz,qi)=>{
+    const div=document.createElement("div");div.className="quiz-q";
+    div.innerHTML=`<p><span class="qn">${String(qi+1).padStart(2,"0")}</span>${qz.q}</p>`+
+      qz.c.map((c,ci)=>`<label data-q="${qi}" data-c="${ci}">${c}</label>`).join("")+
+      `<div class="expl">${qz.e}</div>`;
+    el.appendChild(div);
+  });
+}
+buildQuiz();
+$("#quizList").addEventListener("click",e=>{
+  const lb=e.target.closest("label");if(!lb)return;
+  const qDiv=lb.parentElement;if(qDiv.classList.contains("answered"))return;
+  qDiv.classList.add("answered");
+  const qi=+lb.dataset.q,ci=+lb.dataset.c;
+  const labels=qDiv.querySelectorAll("label");
+  labels[QUIZ[qi].a].classList.add("correct");
+  if(ci===QUIZ[qi].a)score++;else lb.classList.add("wrong");
+  answered++;
+  $("#quizBar").style.width=(answered/QUIZ.length*100)+"%";
+  if(answered===QUIZ.length){
+    const s=$("#quizScore");s.style.display="block";
+    let msg=score>=13?"ยอดเยี่ยม พร้อมรับสายจริง":score>=10?"ผ่านเกณฑ์ ทบทวนข้อที่ผิดอีกครั้ง":"ควรทบทวนคู่มือแล้วทำแบบทดสอบใหม่";
+    let best="";
+    try{
+      const prev=+localStorage.getItem("ptsQuizBest2")||0;
+      if(score>prev)localStorage.setItem("ptsQuizBest2",score);
+      best=` · คะแนนดีที่สุด ${Math.max(score,prev)}/${QUIZ.length}`;
+    }catch(err){}
+    s.innerHTML=`<div class="big">${score}/${QUIZ.length}</div><p>${msg}${best}</p><button onclick="buildQuiz();window.scrollTo({top:0,behavior:'smooth'})">ทำแบบทดสอบอีกครั้ง</button>`;
+    s.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+});
+
+/* tabs */
+function switchTab(id){
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  document.querySelectorAll("#sideNav button,#bottomNav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===id));
+  window.scrollTo({top:0});
+}
+document.querySelectorAll("#sideNav button,#bottomNav button").forEach(b=>b.addEventListener("click",()=>switchTab(b.dataset.tab)));
+
+/* clock */
+function tick(){
+  const now=new Date();
+  $("#clockT").textContent=now.toLocaleTimeString("th-TH",{hour:"2-digit",minute:"2-digit"});
+  $("#clockD").textContent=now.toLocaleDateString("th-TH",{weekday:"short",day:"numeric",month:"short",year:"numeric"});
+}
+tick();setInterval(tick,15000);
+
+render();
+</script>
+
+<!-- ===== PIN GATE (client-side, กันคนนอกที่เจอ URL โดยบังเอิญเท่านั้น ไม่ใช่ระบบ security จริง) ===== -->
+<div id="pinGate" style="position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#0E3E2A,#14522F);display:flex;align-items:center;justify-content:center;padding:20px">
+  <div style="background:#fff;border-radius:20px;padding:34px 28px;max-width:360px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35)">
+    <img src="https://www.phyathai.com/images/pyt_logo.svg" alt="Phyathai" style="height:44px;margin-bottom:14px" onerror="this.style.display='none'">
+    <div style="font-family:'Prompt',sans-serif;font-weight:700;color:#0E3E2A;font-size:1.05rem">Call Center Assistant</div>
+    <div style="font-size:.8rem;color:#5A6B60;margin:4px 0 18px">สำหรับบุคลากรเครือพญาไท-เปาโลเท่านั้น<br>กรอกรหัสที่ได้รับจากหัวหน้าทีม</div>
+    <input id="pinInput" type="password" inputmode="numeric" maxlength="8" placeholder="รหัสผ่าน"
+      style="width:100%;padding:13px;text-align:center;font-size:1.3rem;letter-spacing:.4em;border:1.5px solid #DFE8E0;border-radius:12px;outline:none;font-family:inherit">
+    <button id="pinBtn" style="width:100%;margin-top:12px;padding:12px;border:none;border-radius:12px;background:#1E7A4F;color:#fff;font-family:'Prompt',sans-serif;font-weight:600;font-size:.95rem;cursor:pointer">เข้าใช้งาน</button>
+    <div id="pinErr" style="display:none;color:#A94442;font-size:.78rem;margin-top:10px">รหัสไม่ถูกต้อง ลองใหม่อีกครั้ง</div>
+  </div>
+</div>
+<script>
+(function(){
+  var PIN="1772"; /* [เปลี่ยนรหัสก่อน deploy จริง และแจ้งทีมผ่านช่องทางภายใน] */
+  try{ if(sessionStorage.getItem("ptsGateOK")==="1"){ var g=document.getElementById("pinGate"); if(g) g.remove(); return; } }catch(e){}
+  var inp=document.getElementById("pinInput"), btn=document.getElementById("pinBtn"), err=document.getElementById("pinErr");
+  function go(){
+    if(inp.value===PIN){ try{sessionStorage.setItem("ptsGateOK","1");}catch(e){} document.getElementById("pinGate").remove(); }
+    else { err.style.display="block"; inp.value=""; inp.focus(); }
+  }
+  btn.addEventListener("click",go);
+  inp.addEventListener("keydown",function(e){ if(e.key==="Enter") go(); });
+  setTimeout(function(){ inp.focus(); },200);
+})();
+</script>
+
+</body>
+</html>
